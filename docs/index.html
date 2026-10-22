@@ -13,7 +13,7 @@
 :root{
   --bg:#F3F4F7; --surface:#FFFFFF; --ink:#1B2130; --muted:#5F687C; --line:#DADEE7;
   --accent:#992B52; --accent-ink:#FFFFFF; --accent-soft:#F6E6EC;
-  --cue:#1B6862; --cue-soft:#DFF0ED; --quote:#ECEEF4;
+  --cue:#1B6862; --cue-soft:#DFF0ED; --quote:#ECEEF4; --del:#A63A2B; --del-soft:#FBE7E2;
   --f-display:"Hahmlet","Apple SD Gothic Neo","Noto Serif KR",serif;
   --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --fs:1.3rem;
@@ -22,13 +22,13 @@
   :root:not([data-theme="light"]){
     --bg:#121419; --surface:#1A1D25; --ink:#E8EBF2; --muted:#9AA2B5; --line:#2C313D;
     --accent:#F08DB0; --accent-ink:#2A0E1A; --accent-soft:#3A2130;
-    --cue:#84D5CC; --cue-soft:#173532; --quote:#21252F; color-scheme:dark;
+    --cue:#84D5CC; --cue-soft:#173532; --quote:#21252F; --del:#F4A38F; --del-soft:#3B231E; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#121419; --surface:#1A1D25; --ink:#E8EBF2; --muted:#9AA2B5; --line:#2C313D;
   --accent:#F08DB0; --accent-ink:#2A0E1A; --accent-soft:#3A2130;
-  --cue:#84D5CC; --cue-soft:#173532; --quote:#21252F; color-scheme:dark;
+  --cue:#84D5CC; --cue-soft:#173532; --quote:#21252F; --del:#F4A38F; --del-soft:#3B231E; color-scheme:dark;
 }
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
@@ -112,6 +112,18 @@ main.stage{min-width:0;scroll-margin-top:16px;display:flex;flex-direction:column
 .ref-table td:first-child{font-weight:600;white-space:nowrap}
 .ref-note{font-size:.95rem;color:var(--muted);margin:16px 0 0}
 
+/* Compare view: Excel original beside the selected version, word-level changes marked */
+.viewtools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;margin-top:18px}
+.cmp .col{font-size:calc(var(--fs) * .8);line-height:1.75;min-width:0}
+.cmp .col p{margin:0 0 .55em}
+.col-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-bottom:8px;margin-bottom:12px;border-bottom:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.col-h b{font-family:var(--f-display);font-size:1.05rem;color:var(--ink)}
+.col-h .btn{margin-left:auto;min-height:32px;padding:4px 10px;font-size:.8rem}
+del.x{color:var(--del);background:var(--del-soft);text-decoration:line-through;border-radius:4px;padding:0 .15em}
+ins.x{background:var(--cue-soft);text-decoration:underline 2px var(--cue);text-underline-offset:3px;border-radius:4px;padding:0 .15em}
+.steps .keep{margin-left:auto;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
 @media (max-width:820px){
   .layout{display:block}
   .steps{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;max-height:none;overflow-x:auto;overflow-y:hidden;background:var(--bg);margin-inline:-16px;padding:8px 16px;border-bottom:1px solid var(--line);display:flex;gap:6px;scrollbar-width:none}
@@ -126,6 +138,8 @@ main.stage{min-width:0;scroll-margin-top:16px;display:flex;flex-direction:column
   .step{border-radius:14px;padding-inline:18px;padding-block:22px 18px;scroll-margin-top:64px}
   .vers{gap:6px;grid-template-columns:repeat(2,1fr)}
   .vers button:first-child{grid-column:1/-1}
+  .cmp{grid-template-columns:1fr}
+  .steps button[aria-current="step"] .keep{color:inherit;opacity:.85}
   .vers button{padding:10px 12px}
   .vers b{font-size:1.2rem}
 }
@@ -165,7 +179,16 @@ main.stage{min-width:0;scroll-margin-top:16px;display:flex;flex-direction:column
     <span>음악·영상 표시 <span class="cue">음악</span> 음향팀 큐</span>
     <span>회색 상자 신랑 신부 대신 읽는 말</span>
   </p>
-    <div class="seg" role="group" aria-label="보기 방식"><button id="mode-step" data-mode="step" aria-pressed="true">순서별</button><button id="mode-all" data-mode="all" aria-pressed="false">전체 대본</button></div>
+    <p class="legend" id="cmpLegend" hidden>
+    <span><del class="x">취소선</del> 원본에서 바뀌거나 빠진 말</span>
+    <span><ins class="x">밑줄</ins> 새로 쓴 말</span>
+    <span><span class="idir">(괄호)</span> 지문은 비교 안 함</span>
+    <span>순서 옆 % 원본 단어가 남은 비율</span>
+  </p>
+    <div class="viewtools">
+      <button class="btn" id="cmpBtn" aria-pressed="false">원본과 비교</button>
+      <div class="seg" role="group" aria-label="보기 방식"><button id="mode-step" data-mode="step" aria-pressed="true">순서별</button><button id="mode-all" data-mode="all" aria-pressed="false">전체 대본</button></div>
+    </div>
   </div>
   <div class="layout">
     <nav class="steps" aria-label="식순"><ol id="stepList"></ol><div class="refs" id="refList"></div></nav>
@@ -378,10 +401,9 @@ const V5 = {
       "신랑과는 중학교 때 만나 어느덧 20년이라는 세월을 함께 보냈습니다.",
       "그런 친구가 결혼을 한다고 하니, 기쁘면서도 제가 더 떨리는 것 같습니다.",
       "## 개식",
-      "오늘 예식은 주례 없이, 우리 신랑 신부가 하객 여러분 앞에서 직접 사랑을 맹세하는 예식으로 진행됩니다.",
-      "그래서 여기 계신 모든 분들께서 두 사람의 증인이 되어 주시겠습니다.",
-      "두 사람의 첫 시작, 따듯하게 응원해 주시면 감사하겠습니다.",
-      "자, 그럼 지금부터 신랑 박종문 군과 신부 윤수희 양의 결혼식을 시작하겠습니다.",
+      "오늘은 신랑,신부가 직접 하객분들 앞에서 사랑을 맹세하는 주례 없는 예식으로 진행 될 예정입니다.",
+      "하객분들께서는 직접 증인이 되셔서 두 사람의 첫 시작을 응원해 주시기 바랍니다.",
+      "그럼 지금부터 신랑 박종문 군과 신부 윤수희 양의 결혼식을 거행하도록 하겠습니다.",
       "큰 박수 부탁드리겠습니다."
     ]},
     { short: "화촉점화", title: "화촉점화 · 양가 어머님 인사", lines: [
@@ -418,8 +440,7 @@ const V5 = {
       "(중간쯤 걸어왔을 때)",
       "다시 한번 큰 박수 부탁드리겠습니다!"
     ], ifs: [
-      ["대기가 길어질 때", "네, 우리 신랑이 마지막으로 매무새를 다듬고 있다고 합니다. 잠시만 기다려 주시겠습니다."],
-      ["더 길어질 때", "기다리시는 동안 함성 연습을 한번 해 보겠습니다. 우리 신랑이 들어오면, 오늘 가장 큰 박수와 함성 부탁드리겠습니다!"]
+      ["대기가 길어질 때", "네, 우리 신랑이 마지막으로 매무새를 다듬고 있다고 합니다. 잠시만 기다려 주시겠습니다."]
     ]},
     { short: "신부 입장", title: "신부 입장", lines: [
       "(신부 대기 확인 후)",
@@ -1046,6 +1067,59 @@ function renderLine(s) {
   return `<p class="say${callOnly ? " call-line" : ""}">${inline(s)}</p>`;
 }
 
+// Compare a version with the Excel original word by word; parenthesised stage notes are shown but not compared
+const normWord = w => w.replace(/[\s.,!?·“”"'‘’~…]/g, "");
+function plainLines(lines) {
+  return lines.map(l => l.startsWith("## ") ? "" : l.replace(/^\(선택\) /, "")
+    .replace(/\(\((.+?)\)\)/g, "($1)").replace(/\*\*/g, "").replace(/\s*\[(음악|영상)\]/g, ""));
+}
+function wordsOf(lines) {
+  const out = [];
+  lines.forEach((l, li) => l.split(/(\([^)]*\))/).forEach(seg => {
+    if (!seg.trim()) return;
+    if (/^\(.*\)$/.test(seg)) out.push({ t: seg, li, note: true });
+    else seg.trim().split(/\s+/).forEach(t => out.push({ t, li, k: normWord(t) }));
+  }));
+  return out;
+}
+// Marks words both sides share (longest common subsequence); returns the share of original words kept
+function markShared(a, b) {
+  const A = a.filter(w => w.k), B = b.filter(w => w.k);
+  const n = A.length, m = B.length, W = m + 1, d = new Uint16Array((n + 1) * W);
+  for (let i = n - 1; i >= 0; i--) for (let j = m - 1; j >= 0; j--)
+    d[i * W + j] = A[i].k === B[j].k ? d[(i + 1) * W + j + 1] + 1 : Math.max(d[(i + 1) * W + j], d[i * W + j + 1]);
+  for (let i = 0, j = 0; i < n && j < m;) {
+    if (A[i].k === B[j].k) { A[i].same = B[j].same = true; i++; j++; }
+    else if (d[(i + 1) * W + j] >= d[i * W + j + 1]) i++;
+    else j++;
+  }
+  return n ? Math.round(100 * d[0] / n) : 100;
+}
+function renderSide(words, tag) {
+  const rows = new Map();
+  words.forEach(w => { if (!rows.has(w.li)) rows.set(w.li, []); rows.get(w.li).push(w); });
+  return [...rows.values()].map(ws => {
+    let html = "", run = [];
+    const flush = () => { if (run.length) html += `<${tag} class="x">${esc(run.join(" "))}</${tag}> `; run = []; };
+    ws.forEach(w => {
+      if (w.k && !w.same) { run.push(w.t); return; }
+      flush();
+      html += w.note ? `<span class="idir">${esc(w.t)}</span> ` : `${esc(w.t)} `;
+    });
+    flush();
+    return `<p>${html.trim()}</p>`;
+  }).join("");
+}
+const cmpCache = {};
+function compared(v) {
+  return cmpCache[v] || (cmpCache[v] = DATA[v].steps.map((s, i) => {
+    if (!ORIG.steps[i]) return null;
+    const a = wordsOf(ORIG.steps[i].lines), b = wordsOf(plainLines(s.lines));
+    return { keep: markShared(a, b), a, b };
+  }));
+}
+const memoBox = memo => memo ? `<aside class="ifs memo"><h3>엑셀 메모</h3><ul>${memo.map(m => `<li>${esc(m)}</li>`).join("")}</ul></aside>` : "";
+
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
@@ -1067,18 +1141,26 @@ const nav = document.querySelector(".steps");
 const stepList = document.getElementById("stepList");
 const refList = document.getElementById("refList");
 const legend = document.querySelector(".legend");
+const cmpLegend = document.getElementById("cmpLegend");
+const cmpBtn = document.getElementById("cmpBtn");
 const stage = document.getElementById("stage");
+// Kept in the URL rather than storage so the podium view never opens in compare mode by surprise
+let compare = location.hash === "#compare";
+const cmpOn = () => compare && !DATA[ver].raw;
 const segBtns = document.querySelectorAll(".seg button");
 
 function renderNav() {
   const list = items(ver);
   stepList.innerHTML = list.filter(it => it.kind === "step").map(it =>
-    `<li><button data-i="${it.n - 1}"><span class="n">${it.n}</span><span>${esc(it.short)}</span></button></li>`).join("");
+    `<li><button data-i="${it.n - 1}"><span class="n">${it.n}</span><span>${esc(it.short)}</span>${cmpOn() && compared(ver)[it.n - 1] ? `<span class="keep">${compared(ver)[it.n - 1].keep}%</span>` : ""}</button></li>`).join("");
   const steps = DATA[ver].steps.length;
   refList.innerHTML = `<span class="lbl">참고</span>` + list.filter(it => it.kind === "ref").map((it, j) =>
     `<button data-i="${steps + j}"><span>${esc(it.short)}</span></button>`).join("");
   refList.hidden = !DATA[ver].refs.length;
-  legend.hidden = !!DATA[ver].raw;
+  legend.hidden = !!DATA[ver].raw || cmpOn();
+  cmpLegend.hidden = !cmpOn();
+  cmpBtn.hidden = !!DATA[ver].raw;
+  cmpBtn.setAttribute("aria-pressed", String(cmpOn()));
   document.querySelectorAll(".vers button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.v === ver)));
 }
 
@@ -1093,7 +1175,20 @@ function sectionBody(it) {
     <div class="count">원본 · 순서 ${it.n} / ${DATA[ver].steps.length}</div>
     <h2>${esc(s.title)}</h2>
     <div class="script">${s.lines.map(l => l ? `<p>${esc(l)}</p>` : `<p class="gap"></p>`).join("")}</div>
-    ${s.memo ? `<aside class="ifs memo"><h3>엑셀 메모</h3><ul>${s.memo.map(m => `<li>${esc(m)}</li>`).join("")}</ul></aside>` : ""}`;
+    ${memoBox(s.memo)}`;
+  const c = cmpOn() && compared(ver)[it.n - 1];
+  if (c) {
+    const o = ORIG.steps[it.n - 1];
+    return `
+    <div class="count">순서 ${it.n} / ${DATA[ver].steps.length} · 원본 단어 ${c.keep}% 남음</div>
+    <h2>${esc(s.title)}</h2>
+    <div class="cmp">
+      <section class="col"><div class="col-h"><b>원본</b><span>${esc(o.title)}</span><button class="btn" data-copy="${it.n - 1}">원본 복사</button></div>
+        ${renderSide(c.a, "del")}${memoBox(o.memo)}</section>
+      <section class="col"><div class="col-h"><b>${esc(ver)}</b><span>지금 대본</span></div>
+        ${renderSide(c.b, "ins")}</section>
+    </div>`;
+  }
   const calls =[...new Set(s.lines.flatMap(l => [...l.matchAll(/\*\*(.+?)\*\*/g)].map(m => m[1])))];
   return `
     <div class="count">순서 ${it.n} / ${DATA[ver].steps.length}</div>
@@ -1165,6 +1260,20 @@ nav.addEventListener("click", e => {
 stage.addEventListener("click", e => {
   const b = e.target.closest("button[data-go]");
   if (b && !b.disabled) go(idx + Number(b.dataset.go));
+  const c = e.target.closest("button[data-copy]");
+  if (c) copyOrig(c);
+});
+async function copyOrig(btn) {
+  try {
+    await navigator.clipboard.writeText(ORIG.steps[Number(btn.dataset.copy)].lines.join("\n"));
+    btn.textContent = "복사했어요";
+  } catch (e) { btn.textContent = "복사 안 됨"; }
+  setTimeout(() => { btn.textContent = "원본 복사"; }, 1500);
+}
+cmpBtn.addEventListener("click", () => {
+  compare = !compare;
+  history.replaceState(null, "", compare ? "#compare" : location.pathname + location.search);
+  renderNav(); renderStage(); scrollToCurrent();
 });
 document.querySelectorAll(".vers button").forEach(b => b.addEventListener("click", () => {
   if (ver === b.dataset.v) return;
