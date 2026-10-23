@@ -43,10 +43,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
 header.top{background:var(--surface);border-bottom:1px solid var(--line)}
-.top-in{max-width:1120px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px 16px;flex-wrap:wrap}
-.eyebrow{font-size:.78rem;color:var(--muted);font-weight:600}
-h1{font-weight:800;font-size:1.35rem;line-height:1.25;margin:2px 0 0;letter-spacing:-.01em}
-h1 .amp{color:var(--muted);font-weight:500;padding-inline:.2em}
+.top-in{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:flex-end;gap:10px 16px;flex-wrap:wrap}
 .tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 12px;font-weight:600;font-size:.88rem;min-height:40px;color:var(--ink)}
 .btn:hover{background:var(--bg)}
@@ -87,6 +84,23 @@ main.stage{min-width:0;scroll-margin-top:16px;display:flex;flex-direction:column
 .idir{font-size:.74em;color:var(--muted);font-weight:500}
 .cue{display:inline-block;font-size:.62em;font-weight:700;color:var(--cue);background:var(--cue-soft);border-radius:6px;padding:.12em .5em;margin-left:.35em;vertical-align:.18em;line-height:1.45}
 .legend .cue{font-size:.78rem;margin:0}
+.play{border:0;cursor:pointer;font-size:14px;line-height:1.3;padding:.3em .75em;vertical-align:.1em}
+.play:hover{filter:brightness(.95)}
+dialog#player{border:0;padding:0;background:#000;border-radius:14px;width:min(960px,94vw);max-height:90vh;overflow:hidden}
+dialog#player::backdrop{background:rgba(0,0,0,.75)}
+dialog#player video{display:block;width:100%;max-height:calc(90vh - 56px);background:#000}
+dialog#player form{display:flex;justify-content:flex-end;padding:8px}
+dialog#player .btn{background:#1F2229;color:#FFF;border-color:#3A3F4A}
+.player-title{margin:0;padding:12px 16px 4px;color:#FFF;font-weight:700;font-size:.95rem}
+dialog#player.is-audio{position:fixed;inset:auto 0 16px 0;margin:0 auto;z-index:20;width:min(520px,calc(100vw - 32px));background:var(--surface);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+dialog#player.is-audio[open]{display:grid;grid-template-columns:1fr auto;align-items:center}
+dialog#player.is-audio form{grid-row:1;grid-column:2;padding:6px 8px 0}
+dialog#player.is-audio audio{grid-column:1/-1;margin:2px 12px 12px}
+/* keep the end of the script reachable above the docked music player */
+body.has-dock{padding-bottom:120px}
+dialog#player.is-audio .player-title{color:var(--ink)}
+dialog#player audio{display:block;width:calc(100% - 24px);margin:8px 12px 0}
+dialog#player.is-audio .btn{background:var(--surface);color:var(--ink);border-color:var(--line)}
 .legend .idir{font-size:inherit}
 .q{background:var(--quote);border-radius:12px;padding:.6em .9em}
 .tag{display:inline-block;font-size:.6em;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:.08em .45em;margin-right:.5em;vertical-align:.22em;line-height:1.45}
@@ -139,9 +153,7 @@ ins.x{background:var(--ins-soft);text-decoration:underline 2px var(--ins);text-u
   :root{--bg:#fff;--surface:#fff;--ink:#000;--muted:#555;--line:#bbb;--accent:#1D3BB0;--accent-soft:#E8EDFC;--cue:#6B4500;--cue-soft:#FFF1D1;--quote:#F0F2F5;color-scheme:light}
   html,body{background:#fff}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  header.top{border:0}
-  .top-in{padding:0 0 5mm;max-width:none}
-  .tools,.viewbar,.steps,.pager,.calls{display:none!important}
+  header.top,.viewbar,.steps,.pager,.calls{display:none!important}
   .wrap{padding:0;max-width:none}
   .layout{display:block}
   main.stage{display:block}
@@ -159,10 +171,6 @@ ins.x{background:var(--ins-soft);text-decoration:underline 2px var(--ins);text-u
 
 <header class="top">
   <div class="top-in">
-    <div>
-      <div class="eyebrow">결혼식 사회 대본 · 사회 조상원</div>
-      <h1>박종문<span class="amp">&amp;</span>윤수희</h1>
-    </div>
     <div class="tools">
       <span class="note" id="note" aria-live="polite"></span>
       <button class="btn" id="fsDown" aria-label="글자 작게">가−</button>
@@ -177,7 +185,7 @@ ins.x{background:var(--ins-soft);text-decoration:underline 2px var(--ins);text-u
     <p class="legend" id="legend">
       <span><strong class="shout">굵은 파란 글씨</strong> 크게 외치기</span>
       <span><span class="idir">(회색 괄호)</span> 읽지 않는 동작</span>
-      <span><span class="cue">음악</span> 음향팀 큐</span>
+      <span><span class="cue">음악</span> 음향팀 큐 · <span class="cue">▶</span> 누르면 미리 듣기·보기</span>
       <span><span class="tag">선택</span> 생략 가능</span>
       <span><span class="qbox">회색 상자</span> 신랑 신부 대신 읽는 말</span>
     </p>
@@ -198,12 +206,19 @@ ins.x{background:var(--ins-soft);text-decoration:underline 2px var(--ins);text-u
   </div>
 </div>
 
+<dialog id="player" aria-label="미리보기">
+  <p class="player-title"></p>
+  <video controls playsinline preload="none"></video>
+  <audio controls preload="none"></audio>
+  <form method="dialog"><button class="btn">닫기</button></form>
+</dialog>
+
 <script>
 // v5: final.md wording, plus stage cues and fallback lines
 const V5 = {
   steps: [
-    { short: "식전 안내", title: "식전 안내", lines: [
-      "(예식 10분 전, 식전영상이 나오는 동안)",
+    { short: "식전 안내", title: "식전 안내", video: "media/pre.mp4", lines: [
+      "(예식 10분 전, 식전영상이 나오는 동안) [영상]",
       "잠시 안내 말씀 드리겠습니다.",
       "잠시 후 신랑 박종문 군과 신부 윤수희 양의 결혼식이 시작될 예정입니다.",
       "밖에 계신 하객 여러분께서는 식장 안으로 들어오셔서, 마련된 자리에 착석해 주시기 바랍니다.",
@@ -250,7 +265,7 @@ const V5 = {
       ["촛불이 잘 안 붙을 때", "촛불도 오늘 많이 설레나 봅니다. 천천히 다시 한번 밝혀 주시겠습니다."],
       ["점화가 길어질 때", "오늘을 누구보다 기다려 오셨을 두 분 어머님께, 따뜻한 박수 한번 더 부탁드리겠습니다."]
     ]},
-    { short: "신랑 입장", title: "신랑 입장", lines: [
+    { short: "신랑 입장", title: "신랑 입장", audio: "media/groom.mp3", lines: [
       "(신랑 대기 확인 후)",
       "이제 계속해서 오늘의 첫 번째 주인공, 신랑 입장 순서가 있겠습니다.",
       "하객 여러분께서는 뒤쪽을 바라봐 주시겠습니다.",
@@ -263,7 +278,7 @@ const V5 = {
     ], ifs: [
       ["대기가 길어질 때", "네, 우리 신랑이 마지막으로 매무새를 다듬고 있다고 합니다. 잠시만 기다려 주시겠습니다."]
     ]},
-    { short: "신부 입장", title: "신부 입장", lines: [
+    { short: "신부 입장", title: "신부 입장", audio: "media/bride.mp3", lines: [
       "(신부 대기 확인 후)",
       "이어서 오늘의 진짜 주인공, 신부 입장 순서가 있겠습니다.",
       "단상 앞에 선 우리 신랑도, 이 순간을 손꼽아 기다려 왔을 것 같습니다.",
@@ -309,7 +324,7 @@ const V5 = {
     ], ifs: [
       ["반주가 안 나올 때", "네, 잠시 음향 점검이 있겠습니다. 더 좋은 노래를 들려드리기 위한 준비이니, 잠시만 기다려 주시겠습니다."]
     ]},
-    { short: "식중영상", title: "식중영상", lines: [
+    { short: "식중영상", title: "식중영상", video: "media/mid.mp4", lines: [
       "이제 다음 순서로 넘어가 보도록 하겠습니다.",
       "우리 신랑 신부가 오늘 이 자리에 서기까지, 가장 가까운 곳에서 사랑으로 함께해 주신 분들이 계십니다.",
       "두 사람이 이렇게 부부로 새 출발을 할 수 있었던 건, 무엇보다 양가 부모님의 사랑과 응원 덕분일 것입니다.",
@@ -478,19 +493,27 @@ const ORIG = {
 const DATA = { v5: V5 };
 
 const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-function inline(s) {
+// A step that has the file turns its [영상] / [음악] cue into a button that previews it
+const CUE_MEDIA = { 영상: "video", 음악: "audio" };
+function inline(s, step) {
   return esc(s)
     .replace(/\*\*(.+?)\*\*/g, '<strong class="shout">$1</strong>')
     .replace(/\(\((.+?)\)\)/g, '<span class="idir">($1)</span>')
-    .replace(/\[(음악|영상)\]/g, '<span class="cue">$1</span>');
+    .replace(/\[(음악|영상)\]/g, (m, k) => {
+      const kind = CUE_MEDIA[k], src = step && step[kind];
+      return src
+        ? `<button class="cue play" data-media="${src}" data-kind="${kind}" data-title="${esc(step.title)}" aria-label="${k} 미리보기">▶ ${k}</button>`
+        : `<span class="cue">${k}</span>`;
+    });
 }
-function renderLine(s) {
-  if (s.startsWith("## ")) return `<h3 class="sub">${inline(s.slice(3))}</h3>`;
-  if (s.startsWith("(선택) ")) return `<p class="say"><span class="tag">선택</span>${inline(s.slice(5))}</p>`;
-  if (!s.startsWith("((") && /^\(.*\)$/.test(s)) return `<p class="dir">${inline(s)}</p>`;
-  if (s.startsWith("“")) return `<blockquote class="q"><span class="tag">신랑 신부 대신</span>${inline(s)}</blockquote>`;
+function renderLine(s, step) {
+  const t = x => inline(x, step);
+  if (s.startsWith("## ")) return `<h3 class="sub">${t(s.slice(3))}</h3>`;
+  if (s.startsWith("(선택) ")) return `<p class="say"><span class="tag">선택</span>${t(s.slice(5))}</p>`;
+  if (!s.startsWith("((") && /^\(.*\)( \[(음악|영상)\])?$/.test(s)) return `<p class="dir">${t(s)}</p>`;
+  if (s.startsWith("“")) return `<blockquote class="q"><span class="tag">신랑 신부 대신</span>${t(s)}</blockquote>`;
   const callOnly = /^\*\*[^*]+\*\*( \[(음악|영상)\])?$/.test(s);
-  return `<p class="say${callOnly ? " call-line" : ""}">${inline(s)}</p>`;
+  return `<p class="say${callOnly ? " call-line" : ""}">${t(s)}</p>`;
 }
 
 // Compare a version with the Excel original word by word; parenthesised stage notes are shown but not compared
@@ -594,7 +617,7 @@ function sectionBody(it) {
     <div class="count">순서 ${it.n} / ${total}</div>
     <h2>${esc(s.title)}</h2>
     ${calls.length ? `<div class="calls" aria-label="외칠 구호">${calls.map(c => `<span>${esc(c)}</span>`).join("")}</div>` : ""}
-    <div class="script">${s.lines.map(renderLine).join("")}</div>
+    <div class="script">${s.lines.map(l => renderLine(l, s)).join("")}</div>
     ${s.ifs ? `<aside class="ifs"><h3>만약에</h3><dl>${s.ifs.map(([k, t]) => `<div><dt>${inline(k)}</dt><dd>${inline(t)}</dd></div>`).join("")}</dl></aside>` : ""}`;
 }
 
@@ -662,7 +685,37 @@ stage.addEventListener("click", e => {
   if (b && !b.disabled) go(idx + Number(b.dataset.go));
   const c = e.target.closest("button[data-copy]");
   if (c) copyOrig(c);
+  const m = e.target.closest("button[data-media]");
+  if (m) playMedia(m.dataset.media, m.dataset.kind, m.dataset.title);
 });
+// Preview only: the venue plays the music and videos on the day, this is for checking timing.
+// Videos open over the page; music docks at the bottom so the script stays readable while it plays
+const player = document.getElementById("player");
+const playerTitle = player.querySelector(".player-title");
+const mediaEls = { video: player.querySelector("video"), audio: player.querySelector("audio") };
+let playing = null;
+function stopPlaying() {
+  if (!playing) return;
+  playing.pause(); playing.removeAttribute("src"); playing.load();
+  playing = null;
+  document.body.classList.remove("has-dock");
+}
+function playMedia(src, kind, title) {
+  stopPlaying();
+  if (player.open) player.close();
+  playing = mediaEls[kind];
+  for (const [k, el] of Object.entries(mediaEls)) el.hidden = k !== kind;
+  player.classList.toggle("is-audio", kind === "audio");
+  const label = kind === "audio" ? "음악" : "영상";
+  playerTitle.textContent = title.endsWith(label) ? title : `${title} ${label}`;
+  playing.src = src;
+  document.body.classList.toggle("has-dock", kind === "audio");
+  if (kind === "audio") player.show(); else player.showModal();
+  playing.play().catch(() => {});
+}
+// The close event arrives after a switch may already have reopened the player
+player.addEventListener("close", () => { if (!player.open) stopPlaying(); });
+player.addEventListener("click", e => { if (e.target === player) player.close(); });
 async function copyOrig(btn) {
   try {
     await navigator.clipboard.writeText(ORIG.steps[Number(btn.dataset.copy)].lines.join("\n"));
@@ -682,7 +735,8 @@ segBtns.forEach(b => b.addEventListener("click", () => {
   updateSeg(); renderStage(); scrollToCurrent();
 }));
 document.addEventListener("keydown", e => {
-  if (e.altKey || e.metaKey || e.ctrlKey) return;
+  if (e.key === "Escape" && player.open) { player.close(); return; }
+  if ((player.open && !player.classList.contains("is-audio")) || e.altKey || e.metaKey || e.ctrlKey) return;
   const n = items().length;
   if (e.key === "ArrowRight" && idx < n - 1) go(idx + 1);
   if (e.key === "ArrowLeft" && idx > 0) go(idx - 1);
