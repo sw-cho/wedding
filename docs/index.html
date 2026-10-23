@@ -132,6 +132,27 @@ ins.x{background:var(--ins-soft);text-decoration:underline 2px var(--ins);text-u
   .cmp{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
+/* Print: the whole script on A4, black on white, controls and the order rail left out */
+@media print{
+  @page{size:A4;margin:15mm 16mm 17mm;@bottom-center{content:counter(page) " / " counter(pages);font-size:9pt;color:#666}}
+  :root{--bg:#fff;--surface:#fff;--ink:#000;--muted:#555;--line:#bbb;--accent:#1D3BB0;--accent-soft:#E8EDFC;--cue:#6B4500;--cue-soft:#FFF1D1;--quote:#F0F2F5;color-scheme:light}
+  html,body{background:#fff}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  header.top{border:0}
+  .top-in{padding:0 0 5mm;max-width:none}
+  .tools,.viewbar,.steps,.pager,.calls{display:none!important}
+  .wrap{padding:0;max-width:none}
+  .layout{display:block}
+  main.stage{display:block}
+  .step{border:0;border-radius:0;padding:0;margin:0 0 9mm}
+  .count{font-size:8.5pt;break-after:avoid}
+  .step h2{font-size:15pt;margin:1mm 0 3mm;padding-bottom:1.5mm;border-bottom:1.2pt solid #000;break-after:avoid}
+  .script{font-size:12.5pt;line-height:1.6;max-width:none;margin-top:0;gap:.3em}
+  .script p,.script blockquote{break-inside:avoid}
+  .sub,.dir{break-after:avoid}
+  .ifs{font-size:10pt;margin-top:4mm;padding:2.5mm 3.5mm;break-inside:avoid}
+}
 </style>
 </head>
 <body>
@@ -199,7 +220,8 @@ const V5 = {
       "신랑과는 중학교 때 만나 어느덧 20년이라는 세월을 함께 보냈습니다.",
       "그런 친구가 결혼을 한다고 하니, 기쁘면서도 제가 더 떨리는 것 같습니다.",
       "## 개식",
-      "오늘은 신랑,신부가 직접 하객분들 앞에서 사랑을 맹세하는 주례 없는 예식으로 진행 될 예정입니다.",
+      "오늘은 신랑,신부가 직접 하객분들 앞에서 사랑을 맹세하는",
+      "주례 없는 예식으로 진행 될 예정입니다.",
       "하객분들께서는 직접 증인이 되셔서 두 사람의 첫 시작을 응원해 주시기 바랍니다.",
       "그럼 지금부터 신랑 박종문 군과 신부 윤수희 양의 결혼식을 거행하도록 하겠습니다.",
       "큰 박수 부탁드리겠습니다."
@@ -313,7 +335,6 @@ const V5 = {
       "계속해서 신랑 신부는 신랑 부모님 앞으로 천천히 이동해 주시겠습니다. ((이동 확인))",
       "오랜 세월 자녀를 위해 헌신해 주신 부모님께 드리는 최고의 효도는",
       "두 사람이 싸우지 않고 행복하게 잘 사는 모습을 보여드리는 것입니다.",
-      "앞으로 잘 지켜봐 주시기를 바라겠습니다.",
       "신랑 신부가 깊은 존경과 감사의 마음을 담아 인사드리겠습니다.",
       "**신랑 신부, 신랑 부모님께 인사!**",
       "따뜻한 박수 부탁드리겠습니다.",
@@ -331,7 +352,7 @@ const V5 = {
       "네, 이제 마지막 순서, 행진만이 남아 있습니다.",
       "두 사람 앞에 펼쳐질 아름답고 행복한 날들을 향해, 우리 신랑 신부가 힘찬 발걸음을 내딛고자 합니다.",
       "들어올 땐 각자 따로 입장했던 이 길을, 이제 둘이서 서로 손을 맞잡고 함께 걸어 나갈 것입니다.",
-      "우리 신랑 신부가 행진을 할 때, 내빈 여러분께서는 그 어느 때보다 뜨거운 박수와 환호로 아낌없이 축하해 주시면 감사드리겠습니다.",
+      "우리 신랑 신부가 행진을 할 때, 내빈 여러분께서는 그 어느 때보다 뜨거운 박수와 환호로, 아낌없이 축하해 주시면 감사드리겠습니다.",
       "(신랑 신부가 준비되었는지 확인)",
       "자, 그럼 신랑 신부의 행진을 거행하도록 하겠습니다.",
       "**신랑 신부, 행진!** [음악]",
@@ -702,6 +723,20 @@ wakeBtn.addEventListener("click", async () => {
 });
 document.addEventListener("visibilitychange", () => {
   if (wantWake && document.visibilityState === "visible" && !lock) acquire();
+});
+
+// Printing always lays out the whole script without the compare view, then puts the screen back
+let beforePrint = null;
+addEventListener("beforeprint", () => {
+  beforePrint = { mode, compare, idx };
+  mode = "all"; compare = false;
+  renderStage();
+});
+addEventListener("afterprint", () => {
+  if (!beforePrint) return;
+  ({ mode, compare, idx } = beforePrint);
+  beforePrint = null;
+  renderNav(); renderStage(); scrollToCurrent();
 });
 
 updateSeg();
