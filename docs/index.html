@@ -5,147 +5,134 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>종문·수희 결혼식 사회 대본</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700&family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-/* Layout: version switch up top; numbered order rail on the left (a sticky chip strip on phones); one step's script at a time in a reading column sized for the podium */
+/* Reading page for the MC: high-contrast neutral palette, one accent reserved for lines to call out loud.
+   Order rail on the left (a sticky chip strip on phones); one step's script at a time in a column sized for the podium */
 :root{
-  --bg:#F3F4F7; --surface:#FFFFFF; --ink:#1B2130; --muted:#5F687C; --line:#DADEE7;
-  --accent:#992B52; --accent-ink:#FFFFFF; --accent-soft:#F6E6EC;
-  --cue:#1B6862; --cue-soft:#DFF0ED; --quote:#ECEEF4; --del:#A63A2B; --del-soft:#FBE7E2;
-  --f-display:"Hahmlet","Apple SD Gothic Neo","Noto Serif KR",serif;
-  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --bg:#F6F7F9; --surface:#FFFFFF; --ink:#111318; --muted:#5A6170; --line:#E2E5EB;
+  --accent:#2547C8; --accent-ink:#FFFFFF; --accent-soft:#E8EDFC;
+  --cue:#8A5A00; --cue-soft:#FFF1D1; --quote:#F0F2F5;
+  --del:#B42318; --del-soft:#FDECEA; --ins:#0F7B4B; --ins-soft:#E3F5EC;
+  --font:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --fs:1.3rem;
+  color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#121419; --surface:#1A1D25; --ink:#E8EBF2; --muted:#9AA2B5; --line:#2C313D;
-    --accent:#F08DB0; --accent-ink:#2A0E1A; --accent-soft:#3A2130;
-    --cue:#84D5CC; --cue-soft:#173532; --quote:#21252F; --del:#F4A38F; --del-soft:#3B231E; color-scheme:dark;
+    --bg:#0E1014; --surface:#161920; --ink:#EEF0F4; --muted:#A0A7B4; --line:#2A2F39;
+    --accent:#9DB2FF; --accent-ink:#0E1014; --accent-soft:#1E2640;
+    --cue:#F6C453; --cue-soft:#3A2E10; --quote:#1E222A;
+    --del:#FF9A8E; --del-soft:#3A1D1A; --ins:#6FD9A6; --ins-soft:#15301F;
+    color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#121419; --surface:#1A1D25; --ink:#E8EBF2; --muted:#9AA2B5; --line:#2C313D;
-  --accent:#F08DB0; --accent-ink:#2A0E1A; --accent-soft:#3A2130;
-  --cue:#84D5CC; --cue-soft:#173532; --quote:#21252F; --del:#F4A38F; --del-soft:#3B231E; color-scheme:dark;
+  --bg:#0E1014; --surface:#161920; --ink:#EEF0F4; --muted:#A0A7B4; --line:#2A2F39;
+  --accent:#9DB2FF; --accent-ink:#0E1014; --accent-soft:#1E2640;
+  --cue:#F6C453; --cue-soft:#3A2E10; --quote:#1E222A;
+  --del:#FF9A8E; --del-soft:#3A1D1A; --ins:#6FD9A6; --ins-soft:#15301F;
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+[hidden]{display:none!important}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%;word-break:keep-all;overflow-wrap:anywhere}
 button{font:inherit;color:inherit;cursor:pointer}
 button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
 header.top{background:var(--surface);border-bottom:1px solid var(--line)}
-.top-in{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:18px 14px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.eyebrow{font-size:.75rem;letter-spacing:.12em;color:var(--muted);font-weight:600}
-h1{font-family:var(--f-display);font-weight:700;font-size:1.7rem;line-height:1.2;margin:4px 0 0;text-wrap:balance}
-h1 .amp{color:var(--accent);font-weight:500;padding-inline:.15em}
-.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.btn{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 12px;font-weight:600;font-size:.9rem;min-height:40px}
+.top-in{max-width:1120px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px 16px;flex-wrap:wrap}
+.eyebrow{font-size:.78rem;color:var(--muted);font-weight:600}
+h1{font-weight:800;font-size:1.35rem;line-height:1.25;margin:2px 0 0;letter-spacing:-.01em}
+h1 .amp{color:var(--muted);font-weight:500;padding-inline:.2em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 12px;font-weight:600;font-size:.88rem;min-height:40px;color:var(--ink)}
+.btn:hover{background:var(--bg)}
 .btn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .note{font-size:.8rem;color:var(--muted);min-height:1em}
-.vers{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:0 16px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.vers button{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:12px 16px;min-height:68px;min-width:0}
-.vers b{font-family:var(--f-display);font-size:1.4rem;line-height:1}
-.vers span{font-size:.9rem;color:var(--muted);word-break:keep-all}
-.vers button[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft)}
-.vers button[aria-selected="true"] b{color:var(--accent)}
 
-.wrap{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:18px 56px}
-.viewbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;margin:0 0 18px}
-.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.85rem;color:var(--muted);margin:0;min-width:0}
-.seg{display:inline-flex;gap:3px;border:1px solid var(--line);border-radius:12px;padding:3px;background:var(--surface)}
-.seg button{border:0;background:transparent;border-radius:9px;padding:8px 14px;font-weight:600;font-size:.92rem;min-height:38px;color:var(--muted)}
-.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
-.legend .shout{font-size:.95em}
-.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;align-items:start}
+.wrap{max-width:1120px;margin:0 auto;padding:16px 16px 56px}
+.viewbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;margin:0 0 16px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.82rem;color:var(--muted);margin:0;min-width:0}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.viewtools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;gap:2px;border:1px solid var(--line);border-radius:12px;padding:3px;background:var(--surface)}
+.seg button{border:0;background:transparent;border-radius:9px;padding:7px 14px;font-weight:600;font-size:.9rem;min-height:36px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:24px;align-items:start}
 
 .steps{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);max-height:calc(100vh - 32px);overflow:auto}
 .steps ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
-.steps button{width:100%;display:flex;gap:10px;align-items:baseline;text-align:left;border:1px solid transparent;background:transparent;border-radius:10px;padding:9px 10px;font-size:.98rem}
-.steps .n{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600;min-width:1.4em;text-align:right}
-.steps button:hover{background:var(--surface)}
-.steps button[aria-current="step"]{background:var(--surface);border-color:var(--line);font-weight:700}
+.steps button{width:100%;display:flex;gap:10px;align-items:baseline;text-align:left;border:0;background:transparent;border-radius:10px;padding:9px 10px;font-size:.97rem;color:var(--muted);font-weight:500}
+.steps .n{font-variant-numeric:tabular-nums;font-weight:700;min-width:1.4em;text-align:right}
+.steps button:hover{background:var(--surface);color:var(--ink)}
+.steps button[aria-current="step"]{background:var(--accent-soft);color:var(--ink);font-weight:700;box-shadow:inset 3px 0 0 var(--accent)}
 .steps button[aria-current="step"] .n{color:var(--accent)}
-.refs{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
-.refs .lbl{font-size:.72rem;letter-spacing:.12em;color:var(--muted);padding:0 10px 4px;font-weight:600}
+.steps .keep{margin-left:auto;font-size:.75rem;font-weight:600;font-variant-numeric:tabular-nums}
 
-main.stage{min-width:0;scroll-margin-top:16px;display:flex;flex-direction:column;gap:20px}
-.step{scroll-margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding-block:28px 24px;padding-inline:clamp(18px,4vw,44px)}
-.count{font-size:.8rem;letter-spacing:.1em;color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
-.step h2{font-family:var(--f-display);font-size:clamp(1.5rem,3.2vw,2.1rem);line-height:1.25;margin:6px 0 12px;text-wrap:balance}
+main.stage{min-width:0;scroll-margin-top:16px;display:flex;flex-direction:column;gap:16px}
+.step{scroll-margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding-block:26px 22px;padding-inline:clamp(18px,4vw,40px)}
+.count{font-size:.8rem;color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
+.step h2{font-weight:800;font-size:clamp(1.45rem,3vw,1.9rem);line-height:1.3;margin:4px 0 12px;letter-spacing:-.01em}
 .calls{display:flex;flex-wrap:wrap;gap:6px}
-.calls span{font-size:.85rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:4px 10px}
+.calls span{font-size:.85rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:4px 11px}
 
-.script{font-size:var(--fs);line-height:1.75;max-width:36em;margin-top:22px;display:flex;flex-direction:column;gap:.6em}
+.script{font-size:var(--fs);line-height:1.8;font-weight:500;max-width:36em;margin-top:20px;display:flex;flex-direction:column;gap:.55em}
 .script p,.script blockquote,.script h3{margin:0}
-.call-line{font-size:1.16em}
-.shout{color:var(--accent);font-weight:700}
-.dir{font-size:.76em;color:var(--muted);font-style:italic;padding-top:.5em}
-.idir{font-size:.76em;color:var(--muted);font-style:italic}
-.cue{display:inline-block;font-size:.6em;font-weight:700;letter-spacing:.06em;color:var(--cue);background:var(--cue-soft);border-radius:6px;padding:.15em .5em;margin-left:.35em;vertical-align:.2em;font-style:normal;line-height:1.4}
+.call-line{font-size:1.15em}
+.shout{color:var(--accent);font-weight:800}
+.dir{font-size:.74em;color:var(--muted);font-weight:500;padding-top:.45em}
+.idir{font-size:.74em;color:var(--muted);font-weight:500}
+.cue{display:inline-block;font-size:.62em;font-weight:700;color:var(--cue);background:var(--cue-soft);border-radius:6px;padding:.12em .5em;margin-left:.35em;vertical-align:.18em;line-height:1.45}
+.legend .cue{font-size:.78rem;margin:0}
+.legend .idir{font-size:inherit}
 .q{background:var(--quote);border-radius:12px;padding:.6em .9em}
-.tag{display:inline-block;font-size:.58em;font-weight:700;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:.1em .45em;margin-right:.5em;vertical-align:.25em;font-style:normal;line-height:1.4}
+.tag{display:inline-block;font-size:.6em;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:.08em .45em;margin-right:.5em;vertical-align:.22em;line-height:1.45}
+.legend .tag{font-size:.74rem;margin:0}
+.legend .qbox{background:var(--quote);border-radius:5px;padding:0 .45em}
 .q .tag{display:block;width:max-content;margin-bottom:.3em}
-.sub{font-family:var(--f-display);font-size:.85em;color:var(--muted);padding-top:.9em;padding-bottom:.2em;border-bottom:1px dashed var(--line)}
+.sub{font-size:.78em;font-weight:700;color:var(--muted);padding-top:.9em;padding-bottom:.25em;border-bottom:1px solid var(--line)}
 
-.ifs{margin-top:30px;border:1px dashed var(--line);border-radius:14px;padding:16px 18px;font-size:calc(var(--fs) * .8);max-width:44em}
-.ifs h3{margin:0 0 10px;font-size:.75rem;letter-spacing:.12em;color:var(--muted)}
-.ifs dl{margin:0;display:grid;gap:12px}
-.ifs dt{font-weight:700;font-size:.8em;color:var(--muted)}
+.ifs{margin-top:28px;border:1px dashed var(--line);border-radius:12px;padding:14px 16px;font-size:calc(var(--fs) * .78);max-width:44em}
+.ifs h3{margin:0 0 8px;font-size:.75rem;font-weight:700;color:var(--muted)}
+.ifs dl{margin:0;display:grid;gap:10px}
+.ifs dt{font-weight:700;font-size:.82em;color:var(--muted)}
 .ifs dd{margin:2px 0 0;line-height:1.65}
-.script .gap{height:.4em}
 .memo ul{margin:0;padding-left:1.2em;display:grid;gap:6px;line-height:1.65}
 
-.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:30px}
-.pager button{border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:14px 16px;min-height:66px;text-align:left;display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.pager button{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 16px;min-height:64px;text-align:left;display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0}
 .pager .next{align-items:flex-end;text-align:right;background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.pager small{font-size:.75rem;letter-spacing:.08em;opacity:.8}
-.pager strong{font-size:1.02rem;overflow-wrap:anywhere}
+.pager small{font-size:.75rem;opacity:.8}
+.pager strong{font-size:1rem}
 .pager button[disabled]{visibility:hidden}
 
-.ref-lead{font-size:1rem;color:var(--muted);margin:0 0 16px;max-width:40em}
-.tablewrap{overflow-x:auto;margin-top:18px}
-.ref-table{width:100%;border-collapse:collapse;font-size:1rem;min-width:480px}
-.ref-table th,.ref-table td{border-bottom:1px solid var(--line);padding:12px 10px;text-align:left;vertical-align:top}
-.ref-table th{font-size:.75rem;letter-spacing:.1em;color:var(--muted);font-weight:600}
-.ref-table td:first-child{font-weight:600;white-space:nowrap}
-.ref-note{font-size:.95rem;color:var(--muted);margin:16px 0 0}
-
-/* Compare view: Excel original beside the selected version, word-level changes marked */
-.viewtools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+/* Compare view: Excel original beside the script, word-level changes marked */
 .cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;margin-top:18px}
 .cmp .col{font-size:calc(var(--fs) * .8);line-height:1.75;min-width:0}
 .cmp .col p{margin:0 0 .55em}
 .col-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-bottom:8px;margin-bottom:12px;border-bottom:1px solid var(--line);font-size:.85rem;color:var(--muted)}
-.col-h b{font-family:var(--f-display);font-size:1.05rem;color:var(--ink)}
+.col-h b{font-size:1rem;color:var(--ink)}
 .col-h .btn{margin-left:auto;min-height:32px;padding:4px 10px;font-size:.8rem}
 del.x{color:var(--del);background:var(--del-soft);text-decoration:line-through;border-radius:4px;padding:0 .15em}
-ins.x{background:var(--cue-soft);text-decoration:underline 2px var(--cue);text-underline-offset:3px;border-radius:4px;padding:0 .15em}
-.steps .keep{margin-left:auto;font-size:.75rem;color:var(--muted);font-variant-numeric:tabular-nums}
+ins.x{background:var(--ins-soft);text-decoration:underline 2px var(--ins);text-underline-offset:3px;border-radius:4px;padding:0 .15em}
 
 @media (max-width:820px){
   .layout{display:block}
-  .steps{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;max-height:none;overflow-x:auto;overflow-y:hidden;background:var(--bg);margin-inline:-16px;padding:8px 16px;border-bottom:1px solid var(--line);display:flex;gap:6px;scrollbar-width:none}
+  .steps{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;max-height:none;overflow-x:auto;overflow-y:hidden;background:var(--bg);margin-inline:-16px;padding:8px 16px;border-bottom:1px solid var(--line);scrollbar-width:none}
   .steps::-webkit-scrollbar{display:none}
   .steps ol{flex-direction:row;gap:6px}
-  .refs{flex-direction:row;margin:0;padding:0 0 0 6px;border-top:0;border-left:1px solid var(--line);gap:6px}
-  .refs .lbl{display:none}
-  .steps button{white-space:nowrap;width:auto;border-color:var(--line);background:var(--surface);padding:8px 12px;font-size:.92rem}
-  .steps button[aria-current="step"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .steps button{white-space:nowrap;width:auto;border:1px solid var(--line);background:var(--surface);padding:8px 12px;font-size:.92rem;color:var(--ink)}
+  .steps button[aria-current="step"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);box-shadow:none}
   .steps button[aria-current="step"] .n{color:var(--accent-ink)}
   main.stage{scroll-margin-top:64px;margin-top:14px}
   .step{border-radius:14px;padding-inline:18px;padding-block:22px 18px;scroll-margin-top:64px}
-  .vers{gap:6px;grid-template-columns:repeat(2,1fr)}
-  .vers button:first-child{grid-column:1/-1}
   .cmp{grid-template-columns:1fr}
-  .steps button[aria-current="step"] .keep{color:inherit;opacity:.85}
-  .vers button{padding:10px 12px}
-  .vers b{font-size:1.2rem}
 }
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 </style>
-<style>body{margin:0}[hidden]{display:none!important}</style>
 </head>
 <body>
 
@@ -162,225 +149,36 @@ ins.x{background:var(--cue-soft);text-decoration:underline 2px var(--cue);text-u
       <button class="btn" id="wake" aria-pressed="false">화면 켜두기</button>
     </div>
   </div>
-  <div class="vers" role="tablist" aria-label="대본 버전">
-    <button role="tab" id="tab-v5" data-v="v5" aria-selected="true"><b>v5</b><span>최종 · final.md</span></button>
-    <button role="tab" id="tab-v4" data-v="v4" aria-selected="false"><b>v4</b><span>친구 멘트 반영</span></button>
-    <button role="tab" id="tab-v2" data-v="v2" aria-selected="false"><b>v2</b><span>녹음 사회자 스타일</span></button>
-    <button role="tab" id="tab-v1" data-v="v1" aria-selected="false"><b>v1</b><span>원본 대본 기반</span></button>
-    <button role="tab" id="tab-orig" data-v="orig" aria-selected="false"><b>원본</b><span>엑셀 script.xlsx 그대로</span></button>
-  </div>
 </header>
 
 <div class="wrap">
   <div class="viewbar">
-    <p class="legend">
-    <span><strong class="shout">굵은 색 글씨</strong> 크게 외치기</span>
-    <span><span class="idir">(기울임)</span> 읽지 않는 동작</span>
-    <span>음악·영상 표시 <span class="cue">음악</span> 음향팀 큐</span>
-    <span>회색 상자 신랑 신부 대신 읽는 말</span>
-  </p>
+    <p class="legend" id="legend">
+      <span><strong class="shout">굵은 파란 글씨</strong> 크게 외치기</span>
+      <span><span class="idir">(회색 괄호)</span> 읽지 않는 동작</span>
+      <span><span class="cue">음악</span> 음향팀 큐</span>
+      <span><span class="tag">선택</span> 생략 가능</span>
+      <span><span class="qbox">회색 상자</span> 신랑 신부 대신 읽는 말</span>
+    </p>
     <p class="legend" id="cmpLegend" hidden>
-    <span><del class="x">취소선</del> 원본에서 바뀌거나 빠진 말</span>
-    <span><ins class="x">밑줄</ins> 새로 쓴 말</span>
-    <span><span class="idir">(괄호)</span> 지문은 비교 안 함</span>
-    <span>순서 옆 % 원본 단어가 남은 비율</span>
-  </p>
+      <span><del class="x">취소선</del> 원본에서 바뀌거나 빠진 말</span>
+      <span><ins class="x">밑줄</ins> 새로 쓴 말</span>
+      <span><span class="idir">(괄호)</span> 지문은 비교 안 함</span>
+      <span>순서 옆 % 원본 단어가 남은 비율</span>
+    </p>
     <div class="viewtools">
       <button class="btn" id="cmpBtn" aria-pressed="false">원본과 비교</button>
       <div class="seg" role="group" aria-label="보기 방식"><button id="mode-step" data-mode="step" aria-pressed="true">순서별</button><button id="mode-all" data-mode="all" aria-pressed="false">전체 대본</button></div>
     </div>
   </div>
   <div class="layout">
-    <nav class="steps" aria-label="식순"><ol id="stepList"></ol><div class="refs" id="refList"></div></nav>
+    <nav class="steps" aria-label="식순"><ol id="stepList"></ol></nav>
     <main class="stage" id="stage" tabindex="-1"></main>
   </div>
 </div>
 
 <script>
-const V2 = {
-  steps: [
-    { short: "식전 안내", title: "식전 안내", lines: [
-      "(예식 10분 전, 식전영상이 나오는 동안)",
-      "네, 잠시 안내 말씀 드리겠습니다.",
-      "잠시 후 신랑 박종문 군과 신부 윤수희 양의 결혼식이 시작될 예정입니다.",
-      "밖에 계신 내빈 여러분께서는 식장 안으로 들어오셔서, 자리에 앉아 주시겠습니다.",
-      "뒤쪽에 계신 분들은 앞쪽 빈자리부터 채워서 앉아 주시면 감사하겠습니다.",
-      "그래야 우리 신랑 신부가 여러분 얼굴을 더 가까이서 볼 수 있을 것 같습니다.",
-      "그리고 휴대전화는 진동으로 바꿔 주시고, 예식 중에는 자리 이동을 잠시 삼가 주시면 감사하겠습니다.",
-      "(예식 2~3분 전, 한 번 더)",
-      "네, 곧 예식이 시작되겠습니다. 아직 서 계신 분들은 앞쪽 자리부터 앉아 주시겠습니다."
-    ]},
-    { short: "인사·개식", title: "사회자 인사 · 개식", lines: [
-      "(식전영상 끝났는지 확인)",
-      "네, 안녕하십니까.",
-      "바쁘신 와중에도 우리 신랑 신부를 축복해 주시기 위해 와 주신 내빈 여러분, 양가를 대신해 진심으로 감사드립니다.",
-      "저는 오늘 사회를 맡게 된, 신랑의 ○○년 지기 친구 조상원입니다. 반갑습니다. ((인사))",
-      "오늘 예식은 주례 없이, 우리 신랑 신부가 하객 여러분 앞에서 직접 사랑을 맹세하는 예식으로 진행됩니다.",
-      "그래서 오늘은 여기 계신 모든 분들께서 두 사람의 증인이 되어 주시겠습니다.",
-      "두 사람의 첫 시작, 따뜻하게 응원해 주시면 감사하겠습니다.",
-      "자, 그럼 지금부터 신랑 박종문 군과 신부 윤수희 양의 결혼식을 시작하도록 하겠습니다.",
-      "네, 큰 박수 부탁드리겠습니다."
-    ]},
-    { short: "화촉점화", title: "화촉점화 · 양가 어머님 인사", lines: [
-      "네, 먼저 화촉점화 순서가 있겠습니다.",
-      "화촉점화는 양가 어머님께서 촛불을 밝혀서 두 가정이 하나로 연을 맺는 시작을 알리는 순서입니다.",
-      "양가 어머님께서 단상 위로 오르시겠습니다. 큰 박수로 모셔 보겠습니다.",
-      "**양가 어머님 입장!**",
-      "(점화대 앞에 도착하셨는지 확인)",
-      "먼저 우리 신랑 어머님께서 점화해 주시겠습니다.",
-      "이어서 우리 신부 어머님께서 점화해 주시겠습니다.",
-      "사진에 잘 담길 수 있도록, 천천히 밝혀 주시면 좋을 것 같습니다.",
-      "(점화 끝난 뒤)",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "이어서 양가 어머님께서는 서로 마주 보고 서 주시겠습니다.",
-      "서로 존중하는 마음을 담아서, **양가 어머님 인사!**",
-      "이제 내빈 여러분을 향해 서 주시겠습니다.",
-      "오늘 찾아주신 내빈 여러분께, **양가 어머님 인사!**",
-      "네, 다시 한번 큰 박수 부탁드리겠습니다.",
-      "양가 어머님께서는 자리로 돌아가 주시겠습니다. ((착석하실 때까지 박수 이어가기))"
-    ], ifs: [
-      ["입장이 늦어질 때", "네, 어머님들께서 지금 입장 준비를 하고 계십니다. 잠시만 기다려 주시겠습니다."],
-      ["촛불이 잘 안 붙을 때", "촛불도 오늘 많이 설레나 봅니다. 천천히 다시 한번 밝혀 주시겠습니다."],
-      ["점화가 길어질 때", "두 어머님께서 밝혀 주시는 이 불빛처럼, 우리 신랑 신부의 앞날도 환하게 빛나길 바라겠습니다."]
-    ]},
-    { short: "신랑 입장", title: "신랑 입장", lines: [
-      "(신랑이 입장 준비되었는지 확인)",
-      "네, 이제 계속해서 오늘의 첫 번째 주인공, 신랑 입장 순서가 있겠습니다.",
-      "우리 신랑, 지금 많이 떨리고 있을 것 같습니다.",
-      "떨리는 마음이 싹 사라질 수 있도록, 뜨거운 박수와 함성 부탁드리겠습니다.",
-      "**신랑 입장!** [음악]",
-      "(중간쯤 걸어왔을 때)",
-      "네, 다시 한번 큰 박수 부탁드리겠습니다!"
-    ], ifs: [
-      ["대기가 길어질 때", "네, 우리 신랑이 마지막으로 매무새를 다듬고 있다고 합니다. 잠시만 기다려 주시겠습니다."],
-      ["더 길어질 때", "기다리시는 동안 함성 연습 한번 해 볼까요? 우리 신랑이 들어오면, 오늘 가장 큰 박수와 함성 부탁드리겠습니다!"]
-    ]},
-    { short: "신부 입장", title: "신부 입장", lines: [
-      "(신부와 아버님이 입장 준비되었는지 확인)",
-      "이어서 오늘의 진짜 주인공이죠, 신부 입장 순서가 있겠습니다.",
-      "오늘 우리 신부는 아버님의 손을 잡고 입장하겠습니다.",
-      "세상에서 가장 아름다운 우리 신부와, 오늘 누구보다 떨리실 아버님의 발걸음에 큰 박수로 축복해 주시면 감사하겠습니다.",
-      "**신부 입장!** [음악]",
-      "(중간쯤 걸어왔을 때)",
-      "네, 아름다운 우리 신부에게 다시 한번 큰 박수 부탁드리겠습니다!",
-      "(아버님과 신부가 신랑 앞에 도착하면, 예식장 동선 확인)",
-      "이제 신부 아버님께서 우리 신랑에게 신부의 손을 건네주시겠습니다.",
-      "신랑은 아버님께 정중하게 인사드리고, 신부의 손을 잡아 주시겠습니다.",
-      "(손을 건넨 뒤)",
-      "지금까지 딸의 손을 잡아 주셨던 아버님의 마음, 이제 우리 신랑이 이어받겠습니다.",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "아버님께서는 자리로 돌아가 주시겠습니다. ((착석하실 때까지 박수 이어가기))",
-      "(신랑 신부가 단상에 나란히 서면 다음 순서로)"
-    ], ifs: [
-      ["아버님 감정이 북받치실 때", "((잠시 기다렸다가)) 네, 오늘 아버님 마음이 어떠실지 여기 계신 모든 분들이 아실 것 같습니다. 따뜻한 박수 부탁드리겠습니다."]
-    ]},
-    { short: "맞절", title: "신랑 신부 맞절", lines: [
-      "네, 이제 계속해서 신랑 신부의 맞절 순서가 있겠습니다.",
-      "신랑 신부는 서로 마주 보고 서 주시겠습니다.",
-      "서로의 눈을 사랑스럽게 한번 담아 주시고요.",
-      "서로에 대한 사랑과 존경의 마음을 담아서, 맞절하도록 하겠습니다.",
-      "**신랑 신부, 맞절!**",
-      "네, 큰 박수 부탁드리겠습니다."
-    ]},
-    { short: "혼인서약", title: "혼인서약", lines: [
-      "계속해서 신랑 신부의 혼인서약 낭독 순서가 있겠습니다.",
-      "혼인서약은요, 사랑과 신뢰로 평생 함께하겠다는 약속을 신랑 신부가 직접 준비한 내용입니다.",
-      "하객 여러분 앞에서 서로에게 낭독하도록 하겠습니다.",
-      "(마이크가 신랑 신부에게 갔는지 확인)",
-      "신랑 신부는 마이크를 들어 주시고요.",
-      "준비가 되셨으면, 천천히 낭독을 시작해 주시면 되겠습니다.",
-      "(낭독이 끝난 뒤)",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "우리 신랑 신부가 내빈 여러분 앞에서 서로 부부가 됨을 엄숙히 맹세하였습니다.",
-      "두 사람이 오래도록 행복하게 사는 모습, 여러분께서 늘 지켜봐 주시고 응원해 주시면 감사하겠습니다."
-    ], ifs: [
-      ["낭독 중 울먹이거나 멈출 때", "((잠시 기다렸다가)) 네, 우리 모두 큰 박수로 응원해 주시겠습니까?"]
-    ]},
-    { short: "축가", title: "축가", lines: [
-      "네, 이제 다음 순서입니다.",
-      "이렇게 기분 좋은 날, 축가가 빠져서는 안 되겠죠.",
-      "우리 신랑 신부는 축가석을 향해 바라봐 주시기를 바라겠습니다.",
-      "오늘 축가는요, 우리 신랑의 고등학교 동창인 도현명 님께서 준비를 해 주셨다고 합니다.",
-      "네, 큰 박수로 모셔 보겠습니다. [음악]",
-      "(축가가 끝난 뒤)",
-      "네, 다시 한번 큰 박수 부탁드리겠습니다.",
-      "도현명 님께서 우리 신랑 신부에게 아주 따뜻한 축가를 불러 주셨습니다.",
-      "오늘 이 노래처럼, 두 사람 앞날에 행복한 날들만 가득하길 바라겠습니다.",
-      "신랑 신부는 다시 앞을 바라봐 주시겠습니다."
-    ], ifs: [
-      ["반주가 안 나올 때", "네, 잠시 음향 점검이 있겠습니다. 더 좋은 노래를 들려드리기 위한 준비이니, 잠시만 기다려 주시겠습니다."]
-    ]},
-    { short: "식중영상", title: "식중영상", lines: [
-      "이제 다음 순서로 넘어가 보도록 하겠습니다.",
-      "우리 신랑 신부가 오늘 이 자리에 서기까지, 가장 가까운 곳에서 사랑으로 함께해 주신 분들이 계시죠.",
-      "두 사람이 이렇게 부부로 새 출발을 할 수 있었던 건, 무엇보다 양가 부모님의 사랑과 응원 덕분일 것입니다.",
-      "그래서 우리 신랑 신부가, 평소에 쉽게 전하지 못했던 마음을 담아서 영상을 준비했다고 합니다.",
-      "두 사람의 마음을 함께 느껴 주시면서, 잠시 영상 함께 보시겠습니다. [영상]",
-      "(영상이 끝난 뒤)",
-      "네, 영상 보시면서 저도 마음이 참 뭉클해졌습니다.",
-      "우리 신랑 신부의 진심이 부모님께 잘 전해졌으리라 믿습니다.",
-      "따뜻한 박수 한번 부탁드리겠습니다."
-    ], ifs: [
-      ["영상이 바로 안 나올 때", "네, 영상 준비에 잠시 시간이 걸리고 있습니다. 조금만 기다려 주시겠습니다."],
-      ["끝내 안 될 때", "영상은 잠시 후에 다시 보여드리도록 하겠습니다. ((다음 순서로 넘어가기))"]
-    ]},
-    { short: "부모님·내빈 인사", title: "양가 부모님 · 내빈께 인사", lines: [
-      "그럼 이 마음 그대로, 우리 신랑 신부가 양가 부모님과 내빈 여러분께 감사의 인사를 드리는 시간 가져보도록 하겠습니다.",
-      "## 신부 부모님께",
-      "먼저 신랑 신부는 신부 부모님 앞으로 이동하시겠습니다. ((이동 확인))",
-      "사랑하는 딸을 믿고 보내 주시는 부모님 마음, 우리 신랑 신부가 가슴 깊이 새기면서 인사드리겠습니다.",
-      "“낳아 주시고 길러 주셔서 진심으로 감사드립니다. 앞으로 평생 효도하겠습니다. 잘 지켜봐 주시길 바라겠습니다.”",
-      "**신랑 신부, 신부 부모님께 인사!**",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "(선택) 우리 신부 부모님께서는 잠깐 앞으로 나오셔서, 신랑 신부 따뜻하게 한 번씩 안아 주시겠습니다.",
-      "## 신랑 부모님께",
-      "계속해서 신랑 신부는 신랑 부모님 앞으로 천천히 이동해 주시겠습니다. ((이동 확인))",
-      "오랜 세월 자녀를 위해 헌신해 주신 부모님께 드리는 최고의 효도는요,",
-      "앞으로 두 사람이 싸우지 않고 행복하게 잘 사는 모습을 보여드리는 것이 최고의 효도입니다.",
-      "앞으로 잘 지켜봐 주시기를 바라겠습니다.",
-      "**신랑 신부, 신랑 부모님께 인사!**",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "(선택) 마찬가지로 우리 신랑 부모님께서도 앞으로 나오셔서, 신랑 신부 따뜻하게 한 번씩 안아 주시겠습니다.",
-      "## 내빈께",
-      "계속해서 신랑 신부는 중앙으로 이동하셔서, 내빈 여러분께도 감사의 인사를 드려 보도록 하겠습니다.",
-      "원래는 한 분 한 분 찾아뵙고 인사드리는 게 도리겠지만, 이 자리를 빌려서 먼저 인사드리겠습니다.",
-      "“저희를 축하해 주시기 위해 참석해 주신 내빈 여러분께 다시 한번 진심으로 감사드리며, 앞으로 행복하게 잘 사는 모습으로 보답하겠습니다.”",
-      "우리 신랑 신부가 인사드리면, 큰 박수로 답례해 주시기 바랍니다.",
-      "**신랑 신부, 내빈께 인사!**",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "이렇게 우리 신랑 신부가 내빈 여러분과 양가 부모님께 감사의 인사를 드렸습니다."
-    ]},
-    { short: "행진", title: "신랑 신부 행진", lines: [
-      "네, 이제 마지막 순서, 행진만이 남아 있습니다.",
-      "두 사람 앞에 펼쳐질 아름답고 행복한 날들을 향해, 우리 신랑 신부가 힘찬 발걸음을 내딛고자 합니다.",
-      "들어올 땐 각자 따로 입장했던 이 길을, 이제 둘이서 서로 손을 맞잡고 함께 걸어 나갈 것입니다.",
-      "우리 신랑 신부가 행진을 할 때, 내빈 여러분께서는 그 어느 때보다 더 뜨거운 박수와 환호로 끝까지 아낌없이 축하해 주시면 감사드리겠습니다.",
-      "(신랑 신부가 준비되었는지 확인)",
-      "자, 그럼 신랑 신부의 행진을 거행하도록 하겠습니다.",
-      "**신랑 신부, 행진!** [음악]",
-      "((박수가 줄어들면)) 네, 더 크게! 뜨거운 박수와 환호 부탁드리겠습니다!"
-    ]},
-    { short: "폐회사", title: "폐회사", lines: [
-      "(행진이 끝난 뒤)",
-      "네, 이것으로 신랑 박종문 군과 신부 윤수희 양의 결혼식을 모두 마치도록 하겠습니다.",
-      "함께해 주신 모든 분들께 다시 한번 감사드립니다.",
-      "잠시 후 사진 촬영이 있겠습니다.",
-      "신랑 신부의 가족과 친척분들, 직장 동료와 친구분들께서는 사진 촬영을 위해 잠시 자리에서 기다려 주시기 바랍니다.",
-      "식사하실 분들께서는 사진 촬영이 끝난 뒤 연회장으로 이동해 주시면 되겠습니다.",
-      "감사합니다."
-    ]}
-  ],
-  refs: ["style", "sos"],
-  sos: [
-    ["마이크가 안 나올 때", "네, 잠시 마이크 점검이 있겠습니다. 양해 부탁드리겠습니다."],
-    ["내 말이 꼬였을 때", "제가 오늘 우리 신랑만큼 떨리나 봅니다. 다시 말씀드리겠습니다."],
-    ["순서를 헷갈렸을 때", "네, 그 전에 먼저 ○○ 순서가 있겠습니다."],
-    ["다음 순서 준비가 늦을 때", "네, 다음 순서를 준비하는 동안 우리 신랑 신부에게 박수 한번 더 부탁드리겠습니다."],
-    ["장내가 소란할 때", "네, 잠시 우리 신랑 신부에게 집중해 주시겠습니다."]
-  ]
-};
-
-// v5: final.md wording; cues and fallback lines carried over from v4
+// v5: final.md wording, plus stage cues and fallback lines
 const V5 = {
   steps: [
     { short: "식전 안내", title: "식전 안내", lines: [
@@ -548,358 +346,11 @@ const V5 = {
       "식사하실 분들께서는 촬영이 끝난 뒤 연회장으로 이동해 주시면 되겠습니다.",
       "감사합니다."
     ]}
-  ],
-  refs: ["sos"],
-  sos: V2.sos
-};
-
-const V4 = {
-  steps: [
-    { short: "식전 안내", title: "식전 안내", lines: [
-      "(예식 10분 전, 식전영상이 나오는 동안)",
-      "네, 잠시 안내 말씀 드리겠습니다.",
-      "잠시 후 신랑 박종문 군과 신부 윤수희 양의 결혼식이 시작될 예정입니다.",
-      "뒤쪽에 계신 분들은 앞쪽 빈자리부터 채워서 앉아 주시면 감사하겠습니다.",
-      "그리고 휴대전화는 진동으로 바꿔 주시고, 예식 중에는 자리 이동을 잠시 삼가 주시면 감사하겠습니다.",
-      "(예식 2~3분 전, 한 번 더)",
-      "곧 예식이 시작되겠습니다.",
-      "(선택) 아직 서 계신 분들은 앞쪽 자리부터 앉아 주시겠습니다."
-    ]},
-    { short: "인사·개식", title: "사회자 인사 · 개식", lines: [
-      "(식전영상 끝났는지 확인)",
-      "네, 안녕하십니까.",
-      "바쁘신 와중에도 우리 신랑 신부를 축복해 주시기 위해 와 주신 내빈 여러분, 양가를 대신해 진심으로 감사드립니다.",
-      "저는 오늘 사회를 맡게 된, 신랑의 ○○년 지기 친구 조상원입니다. 반갑습니다. ((인사))",
-      "오늘 예식은 주례 없이, 우리 신랑 신부가 하객 여러분 앞에서 직접 사랑을 맹세하는 예식으로 진행됩니다.",
-      "그래서 오늘은 여기 계신 모든 분들께서 두 사람의 증인이 되어 주시겠습니다.",
-      "두 사람의 첫 시작, 따뜻하게 응원해 주시면 감사하겠습니다.",
-      "자, 그럼 지금부터 신랑 박종문 군과 신부 윤수희 양의 결혼식을 시작하도록 하겠습니다.",
-      "큰 박수 부탁드리겠습니다."
-    ]},
-    { short: "화촉점화", title: "화촉점화 · 양가 어머님 인사", lines: [
-      "먼저 화촉점화 순서가 있겠습니다.",
-      "화촉점화는 두 가정이 하나로 연을 맺는 의미 있는 순간입니다.",
-      "양가 어머님께서 단상 위로 오르시겠습니다. 큰 박수로 모셔 보겠습니다.",
-      "**양가 어머님 입장!**",
-      "(점화대 앞에 도착하셨는지 확인)",
-      "먼저 신랑 어머님께서 점화해 주시겠습니다.",
-      "이어서 신부 어머님께서 점화해 주시겠습니다.",
-      "사진에 잘 담길 수 있도록, 천천히 밝혀 주시면 좋을 것 같습니다.",
-      "(점화 끝난 뒤)",
-      "큰 박수 부탁드리겠습니다.",
-      "이어서 양가 어머님께서는 서로 마주 보고 서 주시겠습니다.",
-      "서로 존중하는 마음을 담아서, **양가 어머님 인사!**",
-      "이제 내빈 여러분을 향해 서 주시겠습니다.",
-      "오늘 찾아주신 내빈 여러분께, **양가 어머님 인사!**",
-      "다시 한번 큰 박수 부탁드리겠습니다.",
-      "양가 어머님께서는 자리로 돌아가 주시겠습니다. ((착석하실 때까지 박수 이어가기))"
-    ], ifs: [
-      ["입장이 늦어질 때", "네, 어머님들께서 지금 입장 준비를 하고 계십니다. 잠시만 기다려 주시겠습니다."],
-      ["촛불이 잘 안 붙을 때", "촛불도 오늘 많이 설레나 봅니다. 천천히 다시 한번 밝혀 주시겠습니다."],
-      ["점화가 길어질 때", "두 어머님께서 밝혀 주시는 이 불빛처럼, 우리 신랑 신부의 앞날도 환하게 빛나길 바라겠습니다."]
-    ]},
-    { short: "신랑 입장", title: "신랑 입장", lines: [
-      "(신랑이 입장 준비되었는지 확인)",
-      "이제 계속해서 오늘의 첫 번째 주인공, 신랑 입장 순서가 있겠습니다.",
-      "우리 신랑, 지금 많이 떨리고 있을 것 같습니다.",
-      "떨리는 마음이 싹 사라질 수 있도록, 뜨거운 박수와 함성 부탁드리겠습니다.",
-      "**신랑 입장!** [음악]",
-      "(중간쯤 걸어왔을 때)",
-      "다시 한번 큰 박수 부탁드리겠습니다!"
-    ], ifs: [
-      ["대기가 길어질 때", "네, 우리 신랑이 마지막으로 매무새를 다듬고 있다고 합니다. 잠시만 기다려 주시겠습니다."],
-      ["더 길어질 때", "기다리시는 동안 함성 연습을 한번 해 보겠습니다. 우리 신랑이 들어오면, 오늘 가장 큰 박수와 함성 부탁드리겠습니다!"]
-    ]},
-    { short: "신부 입장", title: "신부 입장", lines: [
-      "(신부가 입장 준비되었는지 확인)",
-      "이어서 오늘의 진짜 주인공, 신부 입장 순서가 있겠습니다.",
-      "오늘 그 누구보다 아름답게 빛나고 있는 신부의 발걸음마다, 큰 박수로 축하해 주시기 바랍니다.",
-      "**신부 입장!** [음악]",
-      "(중간쯤 걸어왔을 때)",
-      "아름다운 우리 신부에게 다시 한번 큰 박수 부탁드리겠습니다!",
-      "(신랑 신부가 단상에 나란히 서면 다음 순서로)"
-    ]},
-    { short: "맞절", title: "신랑 신부 맞절", lines: [
-      "이제 내빈과 가족 앞에서 부부의 예를 드리는 맞절 순서가 있겠습니다.",
-      "신랑 신부는 서로 마주 보고 서 주시겠습니다.",
-      "서로에 대한 사랑과 존경의 마음을 담아서, 맞절하도록 하겠습니다.",
-      "**신랑 신부, 맞절!**",
-      "큰 박수 부탁드리겠습니다."
-    ]},
-    { short: "혼인서약", title: "혼인서약", lines: [
-      "계속해서 신랑 신부의 혼인서약 낭독 순서가 있겠습니다.",
-      "오늘 혼인서약은 사랑과 신뢰로 평생 함께하겠다는 약속을, 신랑 신부가 직접 준비했다고 합니다.",
-      "하객 여러분 앞에서 서로에게 낭독하도록 하겠습니다.",
-      "(마이크가 신랑 신부에게 갔는지 확인)",
-      "신랑 신부는 마이크를 들어 주시겠습니다.",
-      "준비가 되셨으면, 천천히 낭독을 시작해 주시면 되겠습니다.",
-      "(낭독이 끝난 뒤)",
-      "서로를 향한 약속에 큰 박수 부탁드리겠습니다.",
-      "신랑 신부가 여러분 앞에서 부부가 되기로 굳게 약속했습니다.",
-      "두 사람이 오래도록 행복하게 사는 모습, 여러분께서 늘 지켜봐 주시고 응원해 주시면 감사하겠습니다."
-    ], ifs: [
-      ["낭독 중 울먹이거나 멈출 때", "((잠시 기다렸다가)) 네, 우리 모두 큰 박수로 응원해 주시겠습니까?"]
-    ]},
-    { short: "축가", title: "축가", lines: [
-      "다음은 오늘의 감동을 더욱 빛내 줄 축가 순서입니다.",
-      "신랑 신부는 축가석 쪽을 바라봐 주시겠습니다.",
-      "오늘 축가는 우리 신랑의 고등학교 동창인 도현명 님께서 준비를 해 주셨다고 합니다.",
-      "큰 박수로 모셔 보겠습니다. [음악]",
-      "(축가가 끝난 뒤)",
-      "멋진 축가에 다시 한번 큰 박수 부탁드리겠습니다.",
-      "도현명 님께서 우리 신랑 신부에게 아주 따뜻한 축가를 불러 주셨습니다.",
-      "오늘 이 노래처럼, 두 사람 앞날에 행복한 날들만 가득하길 바라겠습니다.",
-      "신랑 신부는 다시 앞을 바라봐 주시겠습니다."
-    ], ifs: [
-      ["반주가 안 나올 때", "네, 잠시 음향 점검이 있겠습니다. 더 좋은 노래를 들려드리기 위한 준비이니, 잠시만 기다려 주시겠습니다."]
-    ]},
-    { short: "식중영상", title: "식중영상", lines: [
-      "이제 다음 순서로 넘어가 보도록 하겠습니다.",
-      "우리 신랑 신부가 오늘 이 자리에 서기까지, 가장 가까운 곳에서 사랑으로 함께해 주신 분들이 계시죠.",
-      "두 사람이 이렇게 부부로 새 출발을 할 수 있었던 건, 무엇보다 양가 부모님의 사랑과 응원 덕분일 것입니다.",
-      "그래서 우리 신랑 신부가, 평소에 쉽게 전하지 못했던 마음을 담아서 영상을 준비했다고 합니다.",
-      "두 사람의 마음을 함께 느껴 주시면서, 잠시 영상 함께 보시겠습니다. [영상]",
-      "(영상이 끝난 뒤)",
-      "네, 영상 보시면서 저도 마음이 참 뭉클해졌습니다.",
-      "우리 신랑 신부의 진심이 부모님께 잘 전해졌으리라 믿습니다.",
-      "따뜻한 박수 한번 부탁드리겠습니다."
-    ], ifs: [
-      ["영상이 바로 안 나올 때", "네, 영상 준비에 잠시 시간이 걸리고 있습니다. 조금만 기다려 주시겠습니다."],
-      ["끝내 안 될 때", "영상은 잠시 후에 다시 보여드리도록 하겠습니다. ((다음 순서로 넘어가기))"]
-    ]},
-    { short: "부모님·내빈 인사", title: "양가 부모님 · 내빈께 인사", lines: [
-      "이제 아낌없는 사랑으로 길러 주신 양가 부모님과, 찾아 주신 내빈 여러분께 인사를 드리겠습니다.",
-      "## 신부 부모님께",
-      "먼저 신랑 신부는 신부 부모님 앞으로 이동하시겠습니다. ((이동 확인))",
-      "사랑하는 딸을 믿고 보내 주시는 부모님 마음, 신랑 신부가 가슴 깊이 새기며 인사드리겠습니다.",
-      "**신랑 신부, 신부 부모님께 인사!**",
-      "큰 박수 부탁드리겠습니다.",
-      "(선택) 신부 부모님께서는 잠깐 앞으로 나오셔서, 신랑 신부 따뜻하게 한 번씩 안아 주시겠습니다.",
-      "## 신랑 부모님께",
-      "계속해서 신랑 신부는 신랑 부모님 앞으로 천천히 이동해 주시겠습니다. ((이동 확인))",
-      "오랜 세월 자녀를 위해 헌신해 주신 부모님께 드리는 최고의 효도는",
-      "두 사람이 싸우지 않고 행복하게 잘 사는 모습을 보여드리는 것입니다.",
-      "앞으로 잘 지켜봐 주시기를 바라겠습니다.",
-      "신랑 신부가 깊은 존경과 감사의 마음을 담아 인사드리겠습니다.",
-      "**신랑 신부, 신랑 부모님께 인사!**",
-      "따뜻한 박수 부탁드리겠습니다.",
-      "(선택) 마찬가지로 우리 신랑 부모님께서도 앞으로 나오셔서, 신랑 신부 따뜻하게 한 번씩 안아 주시겠습니다.",
-      "## 내빈께",
-      "계속해서 신랑 신부는 중앙으로 이동하셔서, 내빈 여러분께도 감사의 인사를 드려 보도록 하겠습니다.",
-      "원래는 한 분 한 분 찾아뵙고 인사드리는 게 도리겠지만, 이 자리를 빌려서 먼저 인사드리겠습니다.",
-      "“참석해 주신 내빈 여러분께 진심으로 감사드립니다. 행복하게 잘 사는 모습으로 보답하겠습니다.”",
-      "신랑 신부가 인사드리면, 큰 박수로 답례해 주시기 바랍니다.",
-      "**신랑 신부, 내빈께 인사!**",
-      "감사합니다.",
-      "이렇게 신랑 신부가 내빈 여러분과 양가 부모님께 감사의 인사를 드렸습니다."
-    ]},
-    { short: "행진", title: "신랑 신부 행진", lines: [
-      "네, 이제 마지막 순서, 행진만이 남아 있습니다.",
-      "두 사람 앞에 펼쳐질 아름답고 행복한 날들을 향해, 우리 신랑 신부가 힘찬 발걸음을 내딛고자 합니다.",
-      "들어올 땐 각자 따로 입장했던 이 길을, 이제 둘이서 서로 손을 맞잡고 함께 걸어 나갈 것입니다.",
-      "우리 신랑 신부가 행진을 할 때, 내빈 여러분께서는 그 어느 때보다 더 뜨거운 박수와 환호로 끝까지 아낌없이 축하해 주시면 감사드리겠습니다.",
-      "(신랑 신부가 준비되었는지 확인)",
-      "자, 그럼 신랑 신부의 행진을 거행하도록 하겠습니다.",
-      "**신랑 신부, 행진!** [음악]",
-      "((박수가 줄어들면)) 더 크게! 뜨거운 박수와 환호 부탁드리겠습니다!"
-    ]},
-    { short: "폐회사", title: "폐회사", lines: [
-      "(행진이 끝난 뒤)",
-      "네, 이것으로 신랑 박종문 군과 신부 윤수희 양의 결혼식을 모두 마치도록 하겠습니다.",
-      "함께해 주신 모든 분들께 다시 한번 감사드립니다.",
-      "잠시 후 사진 촬영이 있겠습니다.",
-      "가족, 친척, 직장 동료, 친구분들께서는 사진 촬영을 위해 잠시 자리에 계셔 주시기 바랍니다.",
-      "식사하실 분들께서는 사진 촬영이 끝난 뒤 연회장으로 이동해 주시면 되겠습니다.",
-      "감사합니다."
-    ]}
-  ],
-  refs: ["sos"],
-  sos: V2.sos
-};
-
-const V1 = {
-  steps: [
-    { short: "식전 안내", title: "식전 안내", lines: [
-      "(예식 10분 전, 식전영상이 나오는 동안)",
-      "잠시 안내 말씀 드리겠습니다.",
-      "잠시 후 신랑 박종문 군과 신부 윤수희 양의 결혼식이 시작될 예정입니다.",
-      "밖에 계신 내빈 여러분께서는 식장 안으로 들어오셔서 자리에 앉아 주시기 바랍니다.",
-      "뒤쪽에 계신 분들은 앞쪽 빈자리부터 채워 앉아 주시면, 신랑 신부가 여러분 얼굴을 더 가까이 볼 수 있을 것 같습니다.",
-      "아울러 휴대전화는 진동으로 바꾸시거나 꺼 주시고, 예식 중에는 자리 이동을 삼가 주시면 감사하겠습니다.",
-      "(예식 2~3분 전, 한 번 더)",
-      "곧 예식이 시작됩니다. 아직 서 계신 분들은 앞쪽 자리부터 앉아 주시면 감사하겠습니다."
-    ]},
-    { short: "인사·개식", title: "사회자 인사 · 개식", lines: [
-      "(식전영상 끝났는지 확인)",
-      "안녕하십니까.",
-      "바쁘신 와중에도 두 사람을 축복하기 위해 와 주신 내빈 여러분께, 양가를 대신해 진심으로 감사의 말씀을 드립니다.",
-      "저는 오늘 사회를 맡은, 신랑의 ○○년 지기 친구 조상원입니다. ((인사))",
-      "(관계에 맞게 바꾸기: ○○년 지기, 대학 동기, 직장 동료 등)",
-      "오늘 예식은 주례 없이, 신랑 신부가 하객 여러분 앞에서 직접 사랑을 맹세하는 예식으로 진행됩니다.",
-      "여러분 모두가 두 사람의 증인이 되어 주시고, 첫 시작을 따뜻하게 응원해 주시기 바랍니다.",
-      "그럼 지금부터 신랑 박종문 군과 신부 윤수희 양의 결혼식을 시작하겠습니다.",
-      "네, 큰 박수 부탁드리겠습니다."
-    ]},
-    { short: "화촉점화", title: "화촉점화 · 양가 어머님 인사", lines: [
-      "먼저 두 가정이 하나로 연을 맺는 의미 있는 순서, 화촉 점화가 있겠습니다.",
-      "양가 어머님께서 단상 위로 오르셔서, 새로운 인연의 시작을 밝혀 주시겠습니다.",
-      "따뜻한 박수로 맞이해 주시기 바랍니다.",
-      "**양가 어머님 입장!**",
-      "(점화대 앞에 도착하셨는지 확인)",
-      "먼저 신랑 어머님께서 점화해 주시겠습니다.",
-      "이어서 신부 어머님께서 점화해 주시겠습니다.",
-      "사진에 예쁘게 담길 수 있도록 천천히 밝혀 주시면 좋을 것 같습니다.",
-      "(점화 끝난 뒤)",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "이어서 양가 어머님께서 서로 마주 보고 서 주시겠습니다.",
-      "서로 존중하는 마음을 담아, **양가 어머님 인사!**",
-      "이제 내빈 여러분을 향해 서 주시겠습니다.",
-      "오늘 찾아주신 내빈 여러분께, **양가 어머님 인사!**",
-      "네, 뜨거운 박수 부탁드리겠습니다.",
-      "양가 어머님께서는 자리로 돌아가 주시겠습니다. ((착석하실 때까지 박수 이어가기))"
-    ], ifs: [
-      ["입장이 늦어질 때", "어머님들께서 입장 준비를 하고 계십니다. 오늘 누구보다 떨리실 두 분을 위해, 잠시만 따뜻한 마음으로 기다려 주시겠습니까?"],
-      ["촛불이 잘 안 붙을 때", "촛불도 오늘 많이 설레나 봅니다. 천천히 다시 한번 밝혀 주시겠습니다."],
-      ["점화가 길어질 때", "두 어머님께서 밝히는 이 불빛처럼, 두 사람의 앞날도 환하게 빛나길 바랍니다."]
-    ]},
-    { short: "신랑 입장", title: "신랑 입장", lines: [
-      "(신랑이 입장 준비되었는지 확인)",
-      "이제 오늘의 첫 번째 주인공, 신랑 입장이 있겠습니다.",
-      "지금 많이 긴장하고 있을 텐데요.",
-      "떨리는 마음이 싹 사라질 수 있도록, 뜨거운 박수와 함성으로 맞아 주시기 바랍니다.",
-      "**신랑 입장!** [음악]",
-      "(중간쯤 걸어왔을 때)",
-      "다시 한번 축하의 환호와 박수 부탁드립니다!",
-      "(단상 앞에 도착하면, 예식장 동선에 따라)",
-      "네, 우리 신랑은 이제 신부를 맞이할 수 있도록 뒤를 돌아 서 주시겠습니다."
-    ], ifs: [
-      ["대기가 길어질 때", "우리 신랑이 마지막으로 매무새를 다듬고 있다고 합니다. 잠시만 기다려 주시겠습니다."],
-      ["더 길어질 때 (분위기 띄우기)", "기다리시는 동안 함성 연습 한번 해 볼까요? 신랑이 문을 열고 들어오면, 오늘 가장 큰 박수와 함성 부탁드리겠습니다!"]
-    ]},
-    { short: "신부 입장", title: "신부 입장", lines: [
-      "(신부와 아버님이 입장 준비되었는지 확인)",
-      "다음은 오늘의 진정한 주인공, 세상에서 가장 아름다운 신부를 맞이할 시간입니다.",
-      "오늘 신부는 아버님의 손을 잡고 입장하겠습니다.",
-      "오늘 그 누구보다 빛나는 신부와 아버님의 발걸음마다, 여러분의 큰 박수로 축복해 주시기 바랍니다.",
-      "**신부 입장!** [음악]",
-      "(중간쯤 걸어왔을 때)",
-      "아름다운 신부를 위해 다시 한번 축복의 박수 부탁드립니다!",
-      "(아버님과 신부가 신랑 앞에 도착하면, 예식장 동선 확인)",
-      "이제 신부 아버님께서 신랑에게 신부의 손을 건네주시겠습니다.",
-      "신랑은 아버님께 정중히 인사드리고, 신부의 손을 잡아 주시기 바랍니다.",
-      "(손을 건넨 뒤)",
-      "지금까지 딸의 손을 잡아 주신 아버님의 마음을, 이제 신랑이 이어받겠습니다.",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "아버님께서는 자리로 돌아가 주시겠습니다. ((착석하실 때까지 박수 이어가기))",
-      "(신랑 신부가 단상에 나란히 서면 다음 순서로)"
-    ], ifs: [
-      ["아버님 감정이 북받치실 때", "((잠시 기다렸다가)) 오늘 아버님의 마음이 어떠실지, 여기 계신 모든 분들이 아실 것 같습니다. 따뜻한 박수 부탁드리겠습니다."]
-    ]},
-    { short: "맞절", title: "신랑 신부 맞절", lines: [
-      "이어서 여러 내빈과 가족 앞에서 부부의 예를 갖추는 신랑 신부의 맞절이 있겠습니다.",
-      "신랑 신부는 서로 마주 보고 서 주시겠습니다.",
-      "서로의 눈을 사랑스럽게 한번 담아 주시고요.",
-      "서로에 대한 사랑과 존경의 마음을 담아서, 맞절하도록 하겠습니다.",
-      "**신랑 신부, 맞절!**",
-      "네, 큰 박수 부탁드리겠습니다."
-    ]},
-    { short: "혼인서약", title: "혼인서약", lines: [
-      "계속해서 사랑과 신뢰로 평생 함께하겠다는 약속, 혼인서약 낭독 순서가 있겠습니다.",
-      "혼인서약은요, 신랑 신부가 직접 준비한 내용을 하객 여러분 앞에서 낭독하도록 하겠습니다.",
-      "(마이크가 신랑 신부에게 갔는지 확인)",
-      "신랑 신부는 마이크를 들어 주시고요.",
-      "준비가 되셨으면 천천히 낭독을 시작해 주시면 되겠습니다.",
-      "(낭독이 끝난 뒤)",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "신랑 신부가 내빈 여러분 앞에서 서로 부부가 됨을 엄숙히 맹세하였습니다.",
-      "두 사람이 오래도록 행복하게 사는 모습, 늘 지켜봐 주시고 응원해 주시길 부탁드립니다."
-    ], ifs: [
-      ["낭독 중 울먹이거나 멈출 때", "((잠시 기다렸다가)) 네, 우리 모두 큰 박수로 응원해 주시겠습니까?"]
-    ]},
-    { short: "축가", title: "축가", lines: [
-      "이제 다음 순서로 넘어가 보도록 하겠습니다.",
-      "이렇게 기분 좋은 날, 축가가 빠져서는 안 되겠죠.",
-      "우리 신랑 신부는 축가석을 향해 바라봐 주시겠습니다.",
-      "오늘 축가는요, 신랑의 고등학교 동창인 도현명 님께서 준비해 주셨다고 합니다.",
-      "큰 박수로 모셔 보겠습니다! [음악]",
-      "(축가가 끝난 뒤)",
-      "네, 다시 한번 큰 박수 부탁드리겠습니다.",
-      "도현명 님께서 우리 신랑 신부에게 아주 따뜻한 축가를 불러 주셨습니다.",
-      "지금 이 노래처럼, 두 사람의 앞날에 행복한 날들만 이어지길 바랍니다.",
-      "신랑 신부는 다시 앞을 바라봐 주시겠습니다."
-    ], ifs: [
-      ["반주가 안 나올 때", "잠시 음향 점검이 있겠습니다. 더 좋은 노래를 들려드리기 위한 준비이니, 잠시만 기다려 주시겠습니다."]
-    ]},
-    { short: "식중영상", title: "식중영상", lines: [
-      "이어서, 오늘 이 자리에 서기까지 가장 가까운 곳에서 함께해 주신 분들께 감사를 전하는 시간입니다.",
-      "두 사람이 이렇게 부부로 새 출발을 할 수 있었던 건, 무엇보다 양가 부모님의 사랑과 응원 덕분일 텐데요.",
-      "신랑 신부가 평소에 쉽게 전하지 못했던 마음을 담아 영상을 준비했다고 합니다.",
-      "두 사람의 마음을 함께 느껴 주시면서, 잠시 영상을 함께 보시겠습니다. [영상]",
-      "(영상이 끝난 뒤)",
-      "영상 보시면서 저도 마음이 뭉클해졌는데요.",
-      "두 사람의 진심이 부모님께 잘 전해졌으리라 믿습니다.",
-      "따뜻한 박수 한번 부탁드리겠습니다.",
-      "그럼 이 마음을 담아, 신랑 신부가 직접 부모님께 인사드리도록 하겠습니다."
-    ], ifs: [
-      ["영상이 바로 안 나올 때", "영상 준비에 잠시 시간이 걸리고 있습니다. 조금만 기다려 주시겠습니다."],
-      ["끝내 안 될 때", "영상은 잠시 후에 다시 보여드리도록 하겠습니다. ((다음 순서로 넘어가기))"]
-    ]},
-    { short: "부모님·내빈 인사", title: "양가 부모님 · 내빈께 인사", lines: [
-      "## 신부 부모님께",
-      "먼저 신랑 신부는 신부 부모님 앞으로 이동하시겠습니다. ((이동 확인))",
-      "사랑하는 딸을 믿고 한 가정으로 보내 주시는 부모님의 깊은 사랑, 신랑 신부가 가슴에 새기며 인사드리겠습니다.",
-      "“낳아 주시고 길러 주셔서 진심으로 감사드립니다. 앞으로 행복하게 잘 사는 모습 보여드리겠습니다.”",
-      "**신랑 신부, 신부 부모님께 인사!**",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "(선택) 신부 부모님께서는 잠깐 앞으로 나오셔서, 두 사람을 따뜻하게 한 번씩 안아 주시겠습니다.",
-      "## 신랑 부모님께",
-      "계속해서 신랑 신부는 신랑 부모님 앞으로 천천히 이동해 주시겠습니다. ((이동 확인))",
-      "오랜 세월 자녀를 위해 헌신해 주신 부모님께, 깊은 존경과 감사를 담아 인사드리겠습니다.",
-      "부모님께 드리는 최고의 효도는요, 앞으로 두 사람이 싸우지 않고 행복하게 잘 사는 모습을 보여드리는 것이겠죠.",
-      "**신랑 신부, 신랑 부모님께 인사!**",
-      "네, 큰 박수 부탁드리겠습니다.",
-      "(선택) 마찬가지로 신랑 부모님께서도 앞으로 나오셔서, 두 사람을 따뜻하게 한 번씩 안아 주시겠습니다.",
-      "## 내빈께",
-      "이제 신랑 신부는 중앙으로 이동하셔서, 내빈 여러분께도 감사의 인사를 드리겠습니다.",
-      "한 분 한 분 찾아뵙고 인사드리는 것이 도리겠지만, 이 자리를 빌려 먼저 인사드립니다.",
-      "“저희를 축하해 주시기 위해 와 주신 내빈 여러분께 진심으로 감사드리며, 앞으로 행복하게 잘 사는 모습으로 보답하겠습니다.”",
-      "신랑 신부가 인사드리면, 큰 박수로 답례해 주시면 감사하겠습니다.",
-      "**신랑 신부, 내빈께 인사!**",
-      "네, 큰 박수 부탁드리겠습니다."
-    ]},
-    { short: "행진", title: "신랑 신부 행진", lines: [
-      "이제 마지막 순서, 행진만이 남아 있습니다.",
-      "두 사람 앞에 펼쳐질 아름답고 행복한 날들을 향해, 신랑 신부가 부부로서 첫걸음을 내딛고자 합니다.",
-      "들어올 땐 각자 따로 걸어왔던 이 길을, 이제 둘이서 손을 맞잡고 함께 걸어 나갑니다.",
-      "내빈 여러분께서는 그 어느 때보다 뜨거운 박수와 환호로, 두 사람의 새 출발을 축복해 주시기 바랍니다.",
-      "(신랑 신부가 준비되었는지 확인)",
-      "자, 그럼 신랑 신부의 행진이 있겠습니다.",
-      "**신랑 신부, 행진!** [음악]",
-      "((행진하는 동안 박수가 줄어들면)) 더 크게! 뜨거운 박수와 환호 부탁드립니다!"
-    ]},
-    { short: "폐회사", title: "폐회사", lines: [
-      "(행진이 끝난 뒤)",
-      "이것으로 신랑 박종문 군과 신부 윤수희 양의 결혼식을 모두 마치겠습니다.",
-      "함께해 주신 모든 하객 여러분께 다시 한번 감사의 인사를 드립니다.",
-      "잠시 후 사진 촬영이 있겠습니다.",
-      "신랑 신부의 가족과 일가친척, 직장 동료, 친구분들께서는 사진 촬영을 위해 잠시 자리에서 기다려 주시기 바랍니다.",
-      "식사하실 분들께서는 사진 촬영이 끝난 뒤 연회장으로 이동해 주시면 됩니다.",
-      "감사합니다."
-    ]}
-  ],
-  refs: ["sos", "changes"],
-  sos: [
-    ["마이크가 안 나올 때", "잠시 마이크 점검이 있겠습니다. 양해 부탁드립니다."],
-    ["내 말이 꼬였을 때", "제가 오늘 신랑만큼 떨리나 봅니다. 다시 말씀드리겠습니다."],
-    ["순서를 헷갈렸을 때", "네, 그 전에 먼저 ○○ 순서가 있겠습니다."],
-    ["다음 순서 준비가 늦을 때", "다음 순서를 준비하는 동안, 우리 신랑 신부에게 박수 한번 더 부탁드리겠습니다."],
-    ["장내가 소란할 때", "네, 잠시 신랑 신부에게 집중해 주시겠습니다."]
   ]
 };
 
 // script.xlsx "주례없는 식순-수정본" 시트 그대로 (A열 식순, B열 내용, F·G열 메모)
 const ORIG = {
-  raw: true,
   steps: [
     { short: "식전 안내", title: "식전안내", lines: [
       "(식전영상은 식시작 10분전 부터 상영)잠시 안내말씀 드리겠습니다.",
@@ -1000,57 +451,10 @@ const ORIG = {
       "잠시 대기하여 주시기 바랍니다.",
       "사진촬영이 끝난 후 식사를 하실 하객분들께서는 연회장으로 자리 이동하여 주시기 바랍니다."
     ] }
-  ],
-  refs: []
+  ]
 };
 
-
-const DATA = { v1: V1, v2: V2, v4: V4, v5: V5, orig: ORIG };
-
-const REF_PAGES = {
-  style: {
-    short: "말투 포인트",
-    title: "녹음 사회자 말투 포인트",
-    html: () => `
-      <p class="ref-lead">대본에 없는 말을 해야 할 때도 이 틀에 맞추면 송파대로 예식 사회자처럼 들려요. 신랑 신부 앞에는 "우리"를 붙이고, 문장은 숨 한 번에 읽을 길이로 끊어요.</p>
-      <div class="tablewrap"><table class="ref-table">
-        <thead><tr><th>상황</th><th>이렇게 말하기</th></tr></thead>
-        <tbody>
-          <tr><td>순서를 열 때</td><td>“네, 이제 계속해서 ○○ 순서가 있겠습니다.”</td></tr>
-          <tr><td>무엇인지 설명할 때</td><td>“○○은요, ~”</td></tr>
-          <tr><td>동작을 부탁할 때</td><td>“~해 주시겠습니다.” (바로 다음 동작이 이어질 때만 “~해 주시고요.”)</td></tr>
-          <tr><td>동작이 끝났을 때</td><td>“네, 큰 박수 부탁드리겠습니다.”</td></tr>
-          <tr><td>순서를 마무리할 때</td><td>“네, ○○께서 우리 신랑 신부에게 ~해 주셨습니다.”</td></tr>
-        </tbody>
-      </table></div>
-      <p class="ref-note">녹음 속 사회자는 22분 동안 박수를 16번 유도했어요. 동작이 하나 끝날 때마다 박수로 빈틈을 채우는 방식이에요.</p>`
-  },
-  sos: {
-    short: "비상 멘트",
-    title: "비상 멘트",
-    html: (v) => `
-      <p class="ref-lead">어느 순서에서든 꺼내 쓰는 예비 멘트예요.</p>
-      <dl class="script sos">${DATA[v].sos.map(([k, t]) => `<div><dt class="dir">${inline(k)}</dt><dd style="margin:0">${inline(t)}</dd></div>`).join("")}</dl>`
-  },
-  changes: {
-    short: "원본에서 바뀐 점",
-    title: "원본에서 바뀐 점",
-    html: () => `
-      <p class="ref-lead">엑셀(script.xlsx) F·G열에 적어둔 메모 7개를 모두 반영했어요.</p>
-      <div class="tablewrap"><table class="ref-table">
-        <thead><tr><th>엑셀 메모</th><th>반영한 곳</th></tr></thead>
-        <tbody>
-          <tr><td>자리 앞으로 당겨 달라는 멘트</td><td>식전 안내: 앞쪽 빈자리부터, 시작 직전에 한 번 더</td></tr>
-          <tr><td>친구 소개 멘트</td><td>인사·개식: “신랑의 ○○년 지기 친구” 자리 표시</td></tr>
-          <tr><td>입장 지연, 점화 후 자리 안내</td><td>화촉점화: 만약에 3개, 어머님 착석 안내</td></tr>
-          <tr><td>대기가 길어질 때</td><td>신랑 입장: 만약에 2개</td></tr>
-          <tr><td>맞절 멘트</td><td>맞절: 송파대로 사회자 멘트를 가져옴</td></tr>
-          <tr><td>영상 보고 나서 멘트</td><td>식중영상: 영상 후 멘트, 인사 순서로 연결</td></tr>
-          <tr><td>부모님 인사할 때 박수?</td><td>부모님·내빈 인사: 인사마다 “네, 큰 박수 부탁드리겠습니다”</td></tr>
-        </tbody>
-      </table></div>`
-  }
-};
+const DATA = { v5: V5 };
 
 const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 function inline(s) {
@@ -1126,73 +530,47 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 };
 
-function items(v) {
-  const d = DATA[v];
-  return [
-    ...d.steps.map((s, i) => ({ kind: "step", n: i + 1, short: s.short, step: s })),
-    ...d.refs.map(id => ({ kind: "ref", id, short: REF_PAGES[id].short }))
-  ];
-}
-
-let ver = DATA[store.get("scriptVer")] ? store.get("scriptVer") : "v5";
+const ver = "v5";
+const items = () => DATA[ver].steps.map((s, i) => ({ n: i + 1, short: s.short, step: s }));
 let idx = parseInt(store.get("idx") || "0", 10) || 0;
 let mode = store.get("mode") === "all" ? "all" : "step";
 
 const nav = document.querySelector(".steps");
 const stepList = document.getElementById("stepList");
-const refList = document.getElementById("refList");
-const legend = document.querySelector(".legend");
+const legend = document.getElementById("legend");
 const cmpLegend = document.getElementById("cmpLegend");
 const cmpBtn = document.getElementById("cmpBtn");
 const stage = document.getElementById("stage");
 // Kept in the URL rather than storage so the podium view never opens in compare mode by surprise
 let compare = location.hash === "#compare";
-const cmpOn = () => compare && !DATA[ver].raw;
 const segBtns = document.querySelectorAll(".seg button");
 
 function renderNav() {
-  const list = items(ver);
-  stepList.innerHTML = list.filter(it => it.kind === "step").map(it =>
-    `<li><button data-i="${it.n - 1}"><span class="n">${it.n}</span><span>${esc(it.short)}</span>${cmpOn() && compared(ver)[it.n - 1] ? `<span class="keep">${compared(ver)[it.n - 1].keep}%</span>` : ""}</button></li>`).join("");
-  const steps = DATA[ver].steps.length;
-  refList.innerHTML = `<span class="lbl">참고</span>` + list.filter(it => it.kind === "ref").map((it, j) =>
-    `<button data-i="${steps + j}"><span>${esc(it.short)}</span></button>`).join("");
-  refList.hidden = !DATA[ver].refs.length;
-  legend.hidden = !!DATA[ver].raw || cmpOn();
-  cmpLegend.hidden = !cmpOn();
-  cmpBtn.hidden = !!DATA[ver].raw;
-  cmpBtn.setAttribute("aria-pressed", String(cmpOn()));
-  document.querySelectorAll(".vers button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.v === ver)));
+  stepList.innerHTML = items().map(it =>
+    `<li><button data-i="${it.n - 1}"><span class="n">${it.n}</span><span>${esc(it.short)}</span>${compare && compared(ver)[it.n - 1] ? `<span class="keep">${compared(ver)[it.n - 1].keep}%</span>` : ""}</button></li>`).join("");
+  legend.hidden = compare;
+  cmpLegend.hidden = !compare;
+  cmpBtn.setAttribute("aria-pressed", String(compare));
 }
 
 function sectionBody(it) {
-  if (it.kind === "ref") {
-    const p = REF_PAGES[it.id];
-    return `<div class="count">참고</div><h2>${esc(p.title)}</h2>${p.html(ver)}`;
-  }
-  const s = it.step;
-  // The Excel original is shown as typed, without the cue markup the rewritten versions use
-  if (DATA[ver].raw) return `
-    <div class="count">원본 · 순서 ${it.n} / ${DATA[ver].steps.length}</div>
-    <h2>${esc(s.title)}</h2>
-    <div class="script">${s.lines.map(l => l ? `<p>${esc(l)}</p>` : `<p class="gap"></p>`).join("")}</div>
-    ${memoBox(s.memo)}`;
-  const c = cmpOn() && compared(ver)[it.n - 1];
+  const s = it.step, total = DATA[ver].steps.length;
+  const c = compare && compared(ver)[it.n - 1];
   if (c) {
     const o = ORIG.steps[it.n - 1];
     return `
-    <div class="count">순서 ${it.n} / ${DATA[ver].steps.length} · 원본 단어 ${c.keep}% 남음</div>
+    <div class="count">순서 ${it.n} / ${total} · 원본 단어 ${c.keep}% 남음</div>
     <h2>${esc(s.title)}</h2>
     <div class="cmp">
       <section class="col"><div class="col-h"><b>원본</b><span>${esc(o.title)}</span><button class="btn" data-copy="${it.n - 1}">원본 복사</button></div>
         ${renderSide(c.a, "del")}${memoBox(o.memo)}</section>
-      <section class="col"><div class="col-h"><b>${esc(ver)}</b><span>지금 대본</span></div>
+      <section class="col"><div class="col-h"><b>지금 대본</b></div>
         ${renderSide(c.b, "ins")}</section>
     </div>`;
   }
-  const calls =[...new Set(s.lines.flatMap(l => [...l.matchAll(/\*\*(.+?)\*\*/g)].map(m => m[1])))];
+  const calls = [...new Set(s.lines.flatMap(l => [...l.matchAll(/\*\*(.+?)\*\*/g)].map(m => m[1])))];
   return `
-    <div class="count">순서 ${it.n} / ${DATA[ver].steps.length}</div>
+    <div class="count">순서 ${it.n} / ${total}</div>
     <h2>${esc(s.title)}</h2>
     ${calls.length ? `<div class="calls" aria-label="외칠 구호">${calls.map(c => `<span>${esc(c)}</span>`).join("")}</div>` : ""}
     <div class="script">${s.lines.map(renderLine).join("")}</div>
@@ -1210,12 +588,12 @@ function markNav() {
     if (on) { b.setAttribute("aria-current", "step"); revealInNav(b); }
     else b.removeAttribute("aria-current");
   });
-  store.set("scriptVer", ver); store.set("idx", String(idx));
+  store.set("idx", String(idx));
 }
 
 let spy = null;
 function renderStage() {
-  const list = items(ver);
+  const list = items();
   if (idx < 0 || idx >= list.length) idx = 0;
   if (spy) { spy.disconnect(); spy = null; }
   if (mode === "all") {
@@ -1229,7 +607,7 @@ function renderStage() {
     }
   } else {
     const it = list[idx], prev = list[idx - 1], next = list[idx + 1];
-    const label = x => x.kind === "step" ? `${x.n}. ${x.short}` : x.short;
+    const label = x => `${x.n}. ${x.short}`;
     stage.innerHTML = `<article class="step">${sectionBody(it)}
       <nav class="pager" aria-label="이전 다음">
         <button class="prev" ${prev ? "" : "disabled"} data-go="-1"><small>← 이전</small><strong>${prev ? esc(label(prev)) : ""}</strong></button>
@@ -1276,11 +654,6 @@ cmpBtn.addEventListener("click", () => {
   history.replaceState(null, "", compare ? "#compare" : location.pathname + location.search);
   renderNav(); renderStage(); scrollToCurrent();
 });
-document.querySelectorAll(".vers button").forEach(b => b.addEventListener("click", () => {
-  if (ver === b.dataset.v) return;
-  ver = b.dataset.v;
-  renderNav(); renderStage(); scrollToCurrent();
-}));
 segBtns.forEach(b => b.addEventListener("click", () => {
   if (mode === b.dataset.mode) return;
   mode = b.dataset.mode;
@@ -1289,7 +662,7 @@ segBtns.forEach(b => b.addEventListener("click", () => {
 }));
 document.addEventListener("keydown", e => {
   if (e.altKey || e.metaKey || e.ctrlKey) return;
-  const n = items(ver).length;
+  const n = items().length;
   if (e.key === "ArrowRight" && idx < n - 1) go(idx + 1);
   if (e.key === "ArrowLeft" && idx > 0) go(idx - 1);
 });
