@@ -5,6 +5,12 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>종문·수희 결혼식 사회 대본</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="사회 대본">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
@@ -732,6 +738,8 @@ function stopPlaying() {
   document.body.classList.remove("has-dock");
 }
 function playMedia(src, kind, title) {
+  // The offline copy leaves the music and videos out
+  if (!navigator.onLine) { say("음악·영상은 인터넷이 연결돼야 재생돼요"); return; }
   stopPlaying();
   if (isOpen()) closePlayer();
   playing = mediaEls[kind];
@@ -800,7 +808,15 @@ applyFs();
 const note = document.getElementById("note");
 const wakeBtn = document.getElementById("wake");
 let wantWake = false, lock = null;
-function say(msg) { note.textContent = msg; clearTimeout(say.t); say.t = setTimeout(() => { note.textContent = ""; }, 3000); }
+// The note doubles as the offline badge, so a passing message hands it back afterwards
+const netStatus = () => navigator.onLine ? "" : "오프라인 · 저장된 대본";
+function say(msg) { note.textContent = msg; clearTimeout(say.t); say.t = setTimeout(() => { note.textContent = netStatus(); }, 3000); }
+const showNet = () => { clearTimeout(say.t); note.textContent = netStatus(); };
+addEventListener("online", showNet);
+addEventListener("offline", showNet);
+showNet();
+// Save an offline copy for the venue (sw.js); file:// previews simply skip it
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("sw.js").catch(() => {});
 async function acquire() {
   try {
     lock = await navigator.wakeLock.request("screen");
