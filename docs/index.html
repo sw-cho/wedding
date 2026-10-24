@@ -819,6 +819,8 @@ showNet();
 if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
   navigator.serviceWorker.addEventListener("message", e => { if (e.data === "offline-ready") say("오프라인으로도 열 수 있게 저장했어요"); });
   navigator.serviceWorker.register("sw.js").catch(() => {});
+  // A first install can fail on a flaky connection; ask once more if nothing has taken over by then
+  setTimeout(() => { if (!navigator.serviceWorker.controller) navigator.serviceWorker.register("sw.js").catch(() => {}); }, 8000);
 }
 async function acquire() {
   try {

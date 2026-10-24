@@ -6,7 +6,11 @@ const FONT_CSS = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist
 const EXTRAS = ["manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
 
 // A stalled request must never keep the install from finishing
-const within = (promise, ms) => Promise.race([promise, new Promise((_, reject) => setTimeout(() => reject(new Error("timeout")), ms))]);
+const within = (promise, ms) => {
+  let timer;
+  const limit = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error("timeout")), ms); });
+  return Promise.race([promise, limit]).finally(() => clearTimeout(timer));
+};
 
 // Only the page itself is required; a missing icon or font must not sink the whole offline copy
 self.addEventListener("install", event => {
