@@ -3,16 +3,20 @@
 // Fonts are saved once; the music and video previews are left out on purpose.
 const CACHE = "mc-script-v1";
 const FONT_CSS = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css";
-const SHELL = ["./", "manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
+const EXTRAS = ["manifest.webmanifest", "icon-180.png", "icon-192.png", "icon-512.png"];
 
+// Only the page itself is required; a missing icon or font must not sink the whole offline copy
 self.addEventListener("install", event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE);
-    await cache.addAll(SHELL);
-    const css = await fetch(FONT_CSS);
-    await cache.put(FONT_CSS, css.clone());
-    const fonts = [...(await css.text()).matchAll(/url\(([^)]+\.woff2)\)/g)].map(m => new URL(m[1], FONT_CSS).href);
-    await Promise.all(fonts.map(u => fetch(u).then(r => r.ok && cache.put(u, r)).catch(() => {})));
+    await cache.add("./");
+    await Promise.all(EXTRAS.map(u => cache.add(u).catch(() => {})));
+    try {
+      const css = await fetch(FONT_CSS);
+      await cache.put(FONT_CSS, css.clone());
+      const fonts = [...(await css.text()).matchAll(/url\(([^)]+\.woff2)\)/g)].map(m => new URL(m[1], FONT_CSS).href);
+      await Promise.all(fonts.map(u => fetch(u).then(r => r.ok && cache.put(u, r)).catch(() => {})));
+    } catch (e) { /* the page still works offline with the system font */ }
     await self.skipWaiting();
   })());
 });
