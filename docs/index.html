@@ -816,7 +816,10 @@ addEventListener("online", showNet);
 addEventListener("offline", showNet);
 showNet();
 // Save an offline copy for the venue (sw.js); file:// previews simply skip it
-if ("serviceWorker" in navigator && location.protocol.startsWith("http")) navigator.serviceWorker.register("sw.js").catch(() => {});
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  navigator.serviceWorker.addEventListener("message", e => { if (e.data === "offline-ready") say("오프라인으로도 열 수 있게 저장했어요"); });
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
 async function acquire() {
   try {
     lock = await navigator.wakeLock.request("screen");
